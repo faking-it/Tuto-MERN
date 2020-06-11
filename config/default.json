@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://dbUser:321-Kenya@cluster0-dmk7u.gcp.mongodb.net/test?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://dbUser:321-Kenya@cluster0-dmk7u.gcp.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken"
 }
