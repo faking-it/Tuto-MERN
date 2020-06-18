@@ -60,11 +60,7 @@
 }
 .container {
   max-width: 1100px;
-  margin: auto;
   overflow: hidden;
-  padding: 0 2rem;
-  margin-top: 6rem;
-  margin-bottom: 3rem;
 }
 .x-large {
   font-size: 4rem;
@@ -306,7 +302,6 @@ img {
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 0.7rem 2rem;
-  position: fixed;
   z-index: 1;
   width: 100%;
   top: 0;
@@ -546,4 +541,10 @@ img {
   .post button {
     padding: 0.3rem 0.4rem;
   }
+}
+@import url("https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css");
+.leaflet-container {
+  z-index: 0;
+  width: 75vw;
+  height: 100vh;
 }

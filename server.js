@@ -19,6 +19,7 @@ app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/profile", require("./routes/api/profile"));
 app.use("/api/posts", require("./routes/api/posts"));
+app.use("/api/trees", require("./routes/api/trees"));
 
 // process.env.PORT est le port qui sera généré une fois le projet hébergé sur Heroku
 // Pour l'instant, vu qu'on travaille en local, on définit le port 5000.

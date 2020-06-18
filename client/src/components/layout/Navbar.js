@@ -3,10 +3,19 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
+import Clock from "react-live-clock";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
+      <li>
+        <Clock
+          className={"clock"}
+          format={"HH:mm:ss"}
+          interval={1000}
+          ticking={true}
+        />
+      </li>
       <li>
         <a onClick={logout} href="#!">
           <i className="fas fa-sign-out-alt" />{" "}
