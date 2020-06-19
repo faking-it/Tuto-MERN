@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
 import Clock from "react-live-clock";
 
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   const authLinks = (
     <ul>
       <li>
@@ -17,9 +17,10 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         />
       </li>
       <li>
-        <Link to="/dashboard">
+        <Link to="/profile">
           <i className="fas fa-user" />{" "}
-          <span className="hide-sm">Dashboard</span></Link>
+          <span className="hide-sm">{user && user.name}</span>
+        </Link>
       </li>
       <li>
         <a onClick={logout} href="#!">
@@ -41,12 +42,27 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     </ul>
   );
 
+  const mwenbwaAuthLink = (
+    <Link to="/dashboard">
+      <i className="fas fa-code"></i> Mwenbwa{" "}
+    </Link>
+  );
+
+  const mwenbwaGuestLink = (
+    <Link to="/">
+      <i className="fas fa-code"></i> Mwenbwa{" "}
+    </Link>
+  );
+
   return (
     <nav className="navbar bg-dark">
       <h1>
-        <Link to="/">
-          <i className="fas fa-code"></i> Mwenbwa{" "}
-        </Link>
+        {!loading && (
+          <Fragment>
+            {" "}
+            {isAuthenticated ? mwenbwaAuthLink : mwenbwaGuestLink}
+          </Fragment>
+        )}
       </h1>
       {!loading && (
         <Fragment> {isAuthenticated ? authLinks : guestLinks}</Fragment>
