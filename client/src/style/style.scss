@@ -10,7 +10,7 @@ $dark-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
 //BODY
 body {
     position: relative;
-    height: 100vh;
+    height: 100%;
     font-family: Montserrat;
     font-size: 1rem;
     line-height: 1.6;
@@ -19,6 +19,7 @@ body {
 
     background-image: url(../img/background.png);
     background-position: center center;
+    background-attachment: fixed;
     background-repeat: no-repeat;
   }
 
@@ -96,6 +97,31 @@ body {
         margin-bottom: 80px;
   }
 
+  .btn {
+    display: inline-block;
+    box-shadow: $dark-shadow;
+    padding: 0.4rem 1.3rem;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 16px;
+    outline: none;
+    -webkit-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+    width: 160px;
+    border-radius: 10px;
+  }
+  .btn.btn-primary {
+    background-color:$dark-color;
+    color: $white-color;
+  }
+  .btn.btn-primary:hover {
+    background-color: $bright-color;
+    color: $darker-color;
+    box-shadow: $dark-shadow;
+  }
+
+
 //LOGIN & REGISTER
 .container{
     text-align: center;
@@ -128,28 +154,4 @@ body {
     margin: 16px;
   }  
 
-  .btn {
-    display: inline-block;
-    background: #f4f4f4;
-    color: #333;
-    box-shadow: $dark-shadow;
-    padding: 0.4rem 1.3rem;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    margin: 16px;
-    outline: none;
-    -webkit-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
-    width: 160px;
-    border-radius: 10px;
-  }
-  .btn.btn-primary {
-    background-color:$dark-color;
-    color: $darker-color;
-  }
-  .btn.btn-primary:hover {
-    background: $bright-color;
-    box-shadow: $dark-shadow;
 
-  }
