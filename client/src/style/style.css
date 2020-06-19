@@ -1,0 +1,148 @@
+body {
+  position: relative;
+  height: 100%;
+  font-family: Montserrat;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: #0C2116;
+  color: #E3E4E4;
+  background-image: url(../img/background.png);
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+a {
+  text-decoration: none;
+  color: #65CCB8;
+}
+
+.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0.7rem 2rem;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  border-bottom: solid 1px #65CCB8;
+  opacity: 0.9;
+}
+
+.navbar ul {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 80px;
+}
+
+.navbar a {
+  color: #fff;
+  padding: 0.45rem;
+  margin: 0 0.25rem;
+}
+
+.navbar a:hover {
+  color: #65CCB8;
+}
+
+.landing-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.x-large {
+  font-size: 160px;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.text-title {
+  font-family: 'Gochi Hand', cursive;
+  color: #E3E4E4;
+  line-height: 1.2;
+  margin-top: 160px;
+  margin-bottom: 80px;
+}
+
+.btn {
+  display: inline-block;
+  -webkit-box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
+          box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
+  padding: 0.4rem 1.3rem;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin: 16px;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  width: 160px;
+  border-radius: 10px;
+}
+
+.btn.btn-primary {
+  background-color: #1C4A32;
+  color: #E3E4E4;
+}
+
+.btn.btn-primary:hover {
+  background-color: #65CCB8;
+  color: #0C2116;
+  -webkit-box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
+          box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+  text-align: center;
+}
+
+.text-primary {
+  font-family: 'Gochi Hand', cursive;
+  color: #65CCB8;
+  line-height: 1.2;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  font-size: 80px;
+}
+
+.lead {
+  margin-bottom: 40px;
+  color: #E3E4E4;
+  font-size: 32px;
+}
+
+.form-group {
+  margin: 1.2rem 0;
+}
+
+.form-field {
+  border: none;
+  border-bottom: solid #65CCB8 1px;
+  background-color: transparent;
+  width: 40%;
+  font-size: 20px;
+  margin: 16px;
+}
+/*# sourceMappingURL=style.css.map */

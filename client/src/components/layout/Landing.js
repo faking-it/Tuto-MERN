@@ -6,13 +6,12 @@ export const Landing = () => {
     <section className="landing">
       <div className="dark-overlay">
         <div className="landing-inner">
-          <h1 className="x-large">Mwenbwa</h1>
-          <p className="lead">Add some description</p>
+          <h1 className="x-large text-title">Mwenbwa</h1>
           <div className="buttons">
             <Link to="/register" className="btn btn-primary">
-              Sign Up
+              Register
             </Link>
-            <Link to="/login" className="btn btn">
+            <Link to="/login" className="btn btn-primary">
               Login
             </Link>
           </div>
