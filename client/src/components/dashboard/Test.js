@@ -10,8 +10,9 @@ const Leaflet = () => {
          .get("/api/trees/get")
          .then((response) => {
              response.data.forEach((element) => {
-                 please.push({position: element});
-                 console.log(element);
+                 if (please.length <= 5779) {
+                     please.push({ position: element });
+                 }
              });
              setMarkers(please);
          })
