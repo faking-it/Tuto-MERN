@@ -34,13 +34,11 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Sign Up</h1>
-      <p className="lead">
-        <i className="fas fa-user"></i> Create Your Account
-      </p>
+      <h1 className="large text-primary">Create your account</h1>
       <form className="form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
           <input
+            className="form-field"
             type="text"
             placeholder="Name"
             name="name"
@@ -51,6 +49,7 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
         </div>
         <div className="form-group">
           <input
+            className="form-field"
             type="email"
             placeholder="Email Address"
             name="email"
@@ -58,13 +57,10 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
             onChange={(e) => onChange(e)}
             //required
           />
-          <small className="form-text">
-            This site uses Gravatar, so if you want a profile image, use a
-            Gravatar email
-          </small>
         </div>
         <div className="form-group">
           <input
+            className="form-field"
             type="password"
             placeholder="Password"
             name="password"
@@ -75,6 +71,7 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
         </div>
         <div className="form-group">
           <input
+            className="form-field"
             type="password"
             placeholder="Confirm Password"
             name="password2"

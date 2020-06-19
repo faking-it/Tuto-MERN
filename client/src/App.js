@@ -13,7 +13,7 @@ import store from "./store";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utilities/setAuthToken";
 
-import "./App.css";
+import "./style/style.css";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
