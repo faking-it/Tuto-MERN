@@ -151,7 +151,7 @@ body {
   }  
 //map && side Lucas
 .leaflet-container {
-  z-index: 0;
+  z-index: 1;
   width: 75%;
     height: 88.2vh;
  order:2;
@@ -181,7 +181,7 @@ color: white;
  color: #65CCB8;
 }
 input[type=button]{
-  z-index: 2;
+  z-index: 1;
   background-color: rgba(31, 48, 39,0.9);
   border: none;
 
@@ -193,16 +193,17 @@ input[type=button]{
 }
 
 input[type=button]:focus{
-  z-index: 1;
+  z-index: 2;
 border: none;
   background: #2A4236;
   box-shadow: none;
 
 }
 .side-child{
+  z-index: 2;
 padding: 12px;
   background: #2A4236;
-  margin-top: -0.3rem;
+  margin-top: -0.5rem;
 }
 .side-btn{
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
