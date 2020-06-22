@@ -4,7 +4,7 @@ import Side from "./Side";
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className={"flex-container"}>
       <Leaflet />
       <Side />
     </div>

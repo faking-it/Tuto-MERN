@@ -1,7 +1,7 @@
 import React from "react";
 function History() {
     return (
-        <div className={"sidecontent-container"}>
+        <div className={"sidecontent-container side-child"}>
             <h3>{"History"}</h3>
             <div className={"history-container"}>
                 <div className={"free-container"}>
