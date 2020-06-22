@@ -21,6 +21,13 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  leaves: {
+    type: Number
+  },
+  trees: {
+    type: Number,
+    default: 0
+  }
 });
 
 // model() reçoit deux paramètres: un modèle "user" et un schéma UserSchema
