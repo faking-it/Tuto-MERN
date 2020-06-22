@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -20,6 +19,10 @@ const UserSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now,
+  },
+  leaves: {
+    type: Number,
+    required: true,
   },
 });
 

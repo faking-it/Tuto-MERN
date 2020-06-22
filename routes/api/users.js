@@ -8,10 +8,42 @@ const { check, validationResult } = require("express-validator");
 
 // Import du modèle User
 const User = require("../../models/User");
+const Tree = require("../../models/Trees");
 
 // @route   POST api/users
 // @desc    Register User
 // @access  Public
+function totalPlayers() {
+  return new Promise((resolve) => {
+    User.find()
+      .exec()
+      .then((results) => {
+        resolve(results.length);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+}
+function totalLeaves() {
+  return new Promise((resolve) => {
+    Tree.find()
+      .exec()
+      .then((results) => {
+        let arraySum = [];
+        results.forEach((element) => {
+          arraySum.push(element.leaves);
+        });
+        let please = arraySum.reduce((acc, val) => {
+          return acc + val;
+        });
+        resolve(please);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+}
 router.post(
   "/",
   // C'est ici que les contrôles opèrent, voir la doc:
@@ -42,25 +74,27 @@ router.post(
           .status(400)
           .json({ errors: [{ msg: "User already exists" }] });
       }
-
       // Obtenir le gravatar de l'utilisateur
       const avatar = gravatar.url(email, {
         s: "200", // default size
         r: "pg", // rating
         d: "mm", // default
       });
+      let totalLeave = await totalLeaves();
+      let totalPlayer = await totalPlayers();
+      let leaves = totalLeave / totalPlayer;
 
       user = new User({
         name,
         email,
         avatar,
         password,
+        leaves,
       });
-
       // Crypter le mdp
       const salt = await bcrypt.genSalt(10); // 10 est le nbre conseillé par la doc
-
       user.password = await bcrypt.hash(password, salt);
+      console.log(user.password);
 
       await user.save(); // Car jusqu'à maintenant, l'utilisateur n'était pas enregistré
 
