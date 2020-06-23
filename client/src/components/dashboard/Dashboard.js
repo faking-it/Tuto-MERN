@@ -10,7 +10,7 @@ function alertMessage() {
   var m = d.getMinutes();
   var s = d.getSeconds();
 
-  if(m === 59 && s === 0){
+  if(m === 43 && s === 0){
     toast.error("Watch out! You'll lose half your leaves in a minute!", {
       position: "bottom-right",
       autoClose: 60000,
@@ -21,7 +21,7 @@ function alertMessage() {
       progress: undefined,
       });
   }
-  else if (m === 14 || m === 29 || m === 44 && s === 0){
+  else if (m === 39 && s === 0 || m === 29  && s === 0 || m === 43 && s === 15){
     toast.success("Nice! You'll get some leaves in a minute!", {
       position: "bottom-right",
       autoClose: 60000,
@@ -33,7 +33,6 @@ function alertMessage() {
       });
   }
 }
-
 setInterval(alertMessage, 1000);
 
 
