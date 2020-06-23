@@ -1,13 +1,14 @@
 import React from "react";
-import Leaflet from "./Test"
-import PropTypes from "prop-types";
+import Leaflet from "./Test";
+import Side from "./Side";
 
-const Dashboard = (props) => {
-  return <div>
-    <Leaflet />
-  </div>;
+const Dashboard = () => {
+  return (
+    <div className={"flex-container"}>
+      <Leaflet />
+      <Side />
+    </div>
+  );
 };
-
-Dashboard.propTypes = {};
 
 export default Dashboard;

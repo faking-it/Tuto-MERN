@@ -1,4 +1,6 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css");
 body {
+  margin: 0;
   position: relative;
   height: 100%;
   font-family: Montserrat;
@@ -22,12 +24,11 @@ a {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  padding: 0.7rem 2rem;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   z-index: 1;
   width: 100%;
   top: 0;
@@ -116,6 +117,7 @@ a {
 
 .container {
   text-align: center;
+  text-align: center;
 }
 
 .text-primary {
@@ -144,5 +146,88 @@ a {
   width: 40%;
   font-size: 20px;
   margin: 16px;
+}
+
+.leaflet-container {
+  z-index: 0;
+  width: 75%;
+  height: 88.2vh;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+
+.flex-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.side-container {
+  display: block;
+  margin: auto;
+  margin-top: 0;
+  width: 25%;
+  background: #2A4236;
+  height: 88.2vh;
+  -webkit-box-shadow: -25px -25px 30px rgba(0, 0, 0, 0.5);
+          box-shadow: -25px -25px 30px rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.side-container hr {
+  color: black;
+}
+
+.side-nav {
+  /* margin-bottom: -0.4rem; */
+  background: #0C2116;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #65CCB8;
+}
+
+input[type=button] {
+  z-index: 2;
+  background-color: rgba(31, 48, 39, 0.9);
+  border: none;
+  color: #65CCB8;
+  padding: 8px 16px;
+  text-decoration: none;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+input[type=button]:focus {
+  z-index: 1;
+  border: none;
+  background: #2A4236;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.side-child {
+  padding: 12px;
+  background: #2A4236;
+  margin-top: -0.3rem;
+}
+
+.side-btn {
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  padding: 0.4rem 1.3rem;
+  border: none;
+  cursor: pointer;
+  /* font-size: 20px; */
+  /* margin: 16px; */
+  outline: none;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  /* width: 160px; */
+  border-radius: 0.5rem;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
 }
 /*# sourceMappingURL=style.css.map */
