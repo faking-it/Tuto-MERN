@@ -8,8 +8,6 @@ import Clock from "react-live-clock";
 
 const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   const authLinks = (
-    <div className="navclock">
-
       <ul>
         <li>
           <Link to="/profile">
@@ -24,7 +22,6 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
           </a>
         </li>
       </ul>
-    </div>
   );
 
   const guestLinks = (
