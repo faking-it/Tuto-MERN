@@ -17,10 +17,22 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
         />
       </li>
       <li>
-        <Link to="/profile">
+        <div>
+          <i className="fa fa-tree" aria-hidden="true" />{" "}
+          <span className="hide-sm">{user && user.trees}</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <i className="fas fa-leaf" />{" "}
+          <span className="hide-sm">{user && user.leaves}</span>
+        </div>
+      </li>
+      <li>
+        <div>
           <i className="fas fa-user" />{" "}
           <span className="hide-sm">{user && user.name}</span>
-        </Link>
+        </div>
       </li>
       <li>
         <a onClick={logout} href="#!">
