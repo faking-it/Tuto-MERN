@@ -5,7 +5,7 @@ import Side from "./Side";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function alertMessage() {
+function toast() {
   var d = new Date();
   var m = d.getMinutes();
   var s = d.getSeconds();
@@ -34,7 +34,7 @@ function alertMessage() {
   }
 }
 
-setInterval(alertMessage, 1000);
+setInterval(toast, 1000);
 
 
 const Dashboard = () => {
