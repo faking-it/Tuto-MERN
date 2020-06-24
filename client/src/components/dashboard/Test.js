@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Map, TileLayer, useLeaflet } from "react-leaflet";
 import L, { circle } from "leaflet";
+import { connect } from "react-redux";
 import "leaflet.markercluster/dist/leaflet.markercluster";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import ReactDOMServer from "react-dom/server";
-
 const mcg = L.markerClusterGroup();
 const MarkerCluster = ({ markers }) => {
   const { map } = useLeaflet();
@@ -31,11 +31,30 @@ const MarkerCluster = ({ markers }) => {
               <div>Leaves: {element.leaves}</div>
               <div>Owner: {element.owner}</div>
               <div>
-                <Button onClick={() => {}}>Buy</Button>
+                <Button id="buy">Buy</Button>
               </div>
             </div>
           )
-        );
+        )
+        .on("popupopen", (a) => {
+          var popUp = a.target.getPopup();
+          popUp
+            .getElement()
+            .querySelector("#buy")
+            .addEventListener("click", (e) => {
+              axios
+                .post("/api/trees/buy", {
+                  lat: element.geoloc.lat,
+                  lon: element.geoloc.lon,
+                })
+                .then((response) => {
+                  console.log("success");
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            });
+        });
     });
 
     // optionally center the map around the markers
@@ -43,26 +62,26 @@ const MarkerCluster = ({ markers }) => {
     // // add the marker cluster group to the map
     map.addLayer(mcg);
   }, [markers, map]);
-  mcg.on("click", (e) => {
-    let treesAround = [];
-    L.Circle.include({
-      contains: function (circ, latLng) {
-        return circ.getLatLng().distanceTo(latLng) < circ.getRadius();
-      },
-    });
-    const circle = L.circle(e.latlng, {
-      radius: 100,
-      opacity: 0,
-      fillOpacity: 0,
-    }).addTo(map);
-    for (let i = 0; i < markers.length; i++) {
-      if (
-        circle.contains(circle, [markers[i].geoloc.lat, markers[i].geoloc.lon])
-      ) {
-        treesAround.push(markers[i]);
-      }
-    }
-  });
+  //mcg.on("click", (e) => {
+  //let treesAround = [];
+  //L.Circle.include({
+  //contains: function (circ, latLng) {
+  //return circ.getLatLng().distanceTo(latLng) < circ.getRadius();
+  //},
+  //});
+  //const circle = L.circle(e.latlng, {
+  //radius: 100,
+  //opacity: 0,
+  //fillOpacity: 0,
+  //}).addTo(map);
+  //for (let i = 0; i < markers.length; i++) {
+  //if (
+  //circle.contains(circle, [markers[i].geoloc.lat, markers[i].geoloc.lon])
+  //) {
+  //treesAround.push(markers[i]);
+  //}
+  //}
+  //});
   return null;
 };
 
