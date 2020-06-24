@@ -87,5 +87,14 @@ router.post(
     }
   }
 );
-
+router.get('/lead', function (req, res, next) {
+  User
+    .find()
+    //.sort('-leaf')
+    .limit(10)
+    .exec(function (err, user) {
+      if (err) return next(err);
+      res.send(user);
+    });
+});
 module.exports = router;
