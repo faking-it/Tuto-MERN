@@ -9,6 +9,26 @@ const { check, validationResult } = require("express-validator");
 // Import du modèle User
 const User = require("../../models/User");
 
+function cool() {
+  return new Promise((resolve) => {
+    Tree.find()
+      .exec()
+      .then((results) => {
+        let arraySum = [];
+        results.forEach((element) => {
+          arraySum.push(element.leaves);
+        });
+        let please = arraySum.reduce((acc, val) => {
+          return acc + val;
+        });
+        resolve(please);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+}
+
 // @route   POST api/users
 // @desc    Register User
 // @access  Public
@@ -50,11 +70,14 @@ router.post(
         d: "mm", // default
       });
 
+      let leaves = await cool();
+
       user = new User({
         name,
         email,
         avatar,
         password,
+        leaves
       });
 
       // Crypter le mdp

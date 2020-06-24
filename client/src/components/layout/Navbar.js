@@ -5,22 +5,27 @@ import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
 import Clock from "react-live-clock";
 
+
 const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   const authLinks = (
     <ul>
       <li>
-        <Clock
-          className={"clock"}
-          format={"HH:mm:ss"}
-          interval={1000}
-          ticking={true}
-        />
+        <div>
+          <i className="fa fa-tree" aria-hidden="true" />{" "}
+          <span className="hide-sm">{user && user.trees}</span>
+        </div>
       </li>
       <li>
-        <Link to="/profile">
+        <div>
+          <i className="fas fa-leaf" />{" "}
+          <span className="hide-sm">{user && user.leaves}</span>
+        </div>
+      </li>
+      <li>
+        <div>
           <i className="fas fa-user" />{" "}
           <span className="hide-sm">{user && user.name}</span>
-        </Link>
+        </div>
       </li>
       <li>
         <a onClick={logout} href="#!">
@@ -64,6 +69,12 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
           </Fragment>
         )}
       </h1>
+      <Clock
+      className={"clock"}
+      format={"HH:mm:ss"}
+      interval={1000}
+      ticking={true}
+      />
       {!loading && (
         <Fragment> {isAuthenticated ? authLinks : guestLinks}</Fragment>
       )}

@@ -54,6 +54,13 @@ a {
   color: #65CCB8;
 }
 
+.clock {
+  font-size: 40px;
+  text-align: center;
+  color: #E3E4E4;
+  text-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
+}
+
 .landing-inner {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -116,6 +123,7 @@ a {
 }
 
 .container {
+  text-align: center;
   text-align: center;
 }
 
