@@ -3,7 +3,7 @@ const router = express.Router();
 router.get('/lead', function (req, res, next) {
     User
         .find()
-        //.sort('-leaf')
+        .sort('-leaves')
         .limit(10)
         .exec(function (err, user) {
             if (err) return next(err);

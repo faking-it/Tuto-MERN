@@ -29,6 +29,7 @@ const LeaderBoard = () => {
                 .then((response) => {
                     const data = response.data;
                     data.forEach(element => {
+                        console.log(element);
                         const name = element.name;
                         please.push(name);
                         // console.log(please.length);
@@ -36,6 +37,7 @@ const LeaderBoard = () => {
                     // if (please.length > 9) {
 
                     setleaderboard(please);
+
                     // }
                 });
 
