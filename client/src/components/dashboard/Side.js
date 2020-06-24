@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import LeaderBoard from "./LeaderBoard";
 import GameLog from "./GameLog";
 import History from "./History";
+import Rules from "./rules";
+
+
 
 // import Leaflet from "./map";
 // import Menu from "./menu";
@@ -22,25 +25,33 @@ function Side() {
                 <input
                     type={"button"}
                     className={"side-btn btn-primary gamelog"}
-                    value={"G"}
+                    value={""}
                     onClick={() => setSide("gamelog")}
                 />
                 <input
                     type={"button"}
                     className={"side-btn btn-primary leaderboard"}
-                    value={"L"}
+                    value={""}
                     onClick={() => setSide("leaderboard")}
                 />
                 <input
                     type={"button"}
                     className={"side-btn btn-primary history"}
-                    value={"H"}
+                    value={""}
                     onClick={() => setSide("history")}
                 />
+                <input
+                    type={"button"}
+                    className={"side-btn btn-primary rule"}
+                    value={""}
+                    onClick={() => setSide("rules")}
+                />                
             </div>
             <div>{side === "gamelog" ? <GameLog /> : ""}</div>
             <div>{side === "leaderboard" ? <LeaderBoard /> : ""}</div>
             <div>{side === "history" ? <History /> : ""}</div>
+            <div>{side === "rules" ? <Rules /> : ""}</div>
+
         </div>
     );
 }

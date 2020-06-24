@@ -45,7 +45,7 @@ a {
 }
 
 .navbar a {
-  color: #fff;
+  color: #E3E4E4;
   padding: 0.45rem;
   margin: 0 0.25rem;
 }
@@ -111,7 +111,7 @@ a {
 }
 
 .btn.btn-primary {
-  background-color: #1C4A32;
+  background-color: #2A4236;
   color: #E3E4E4;
 }
 
@@ -156,7 +156,7 @@ a {
 }
 
 .leaflet-container {
-  z-index: 0;
+  z-index: 2;
   width: 75%;
   height: 88.2vh;
   -webkit-box-ordinal-group: 3;
@@ -177,13 +177,7 @@ a {
   width: 25%;
   background: #2A4236;
   height: 88.2vh;
-  -webkit-box-shadow: -25px -25px 30px rgba(0, 0, 0, 0.5);
-          box-shadow: -25px -25px 30px rgba(0, 0, 0, 0.5);
-  color: white;
-}
-
-.side-container hr {
-  color: black;
+  color: #E3E4E4;
 }
 
 .side-nav {
@@ -197,18 +191,19 @@ a {
 }
 
 input[type=button] {
-  z-index: 2;
-  background-color: rgba(31, 48, 39, 0.9);
+  z-index: 1;
+  background-color: #1A2921;
   border: none;
   color: #65CCB8;
   padding: 8px 16px;
   text-decoration: none;
   margin-top: 1rem;
+  margin-left: 0.5rem;
   cursor: pointer;
 }
 
 input[type=button]:focus {
-  z-index: 1;
+  z-index: 3;
   border: none;
   background: #2A4236;
   -webkit-box-shadow: none;
@@ -218,12 +213,10 @@ input[type=button]:focus {
 .side-child {
   padding: 12px;
   background: #2A4236;
-  margin-top: -0.3rem;
+  z-index: 2;
 }
 
 .side-btn {
-  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   padding: 0.4rem 1.3rem;
   border: none;
   cursor: pointer;
@@ -233,8 +226,66 @@ input[type=button]:focus {
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
   /* width: 160px; */
-  border-radius: 0.5rem;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   margin-left: 0.1rem;
   margin-right: 0.1rem;
+  width: 80px;
+  height: 48px;
+}
+
+.gamelog {
+  background-image: url(../img/gamelog.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 32px;
+}
+
+.leaderboard {
+  background-image: url(../img/leader.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 32px;
+}
+
+.history {
+  background-image: url(../img/historic.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 32px;
+}
+
+.rule {
+  background-image: url(../img/rule.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 32px;
+}
+
+.rules h5 {
+  font-size: 32px;
+  margin: auto;
+  margin-top: 8px;
+}
+
+.rules ul {
+  -webkit-padding-start: 0px;
+          padding-inline-start: 0px;
+}
+
+.rules ul li {
+  text-align: justify;
+  padding: 16px 32px 0px 32px;
+  list-style: none;
+}
+
+.rules ul li b {
+  color: #65CCB8;
+}
+
+.rules h6 {
+  font-family: 'Gochi Hand', cursive;
+  color: #65CCB8;
+  font-size: 32px;
 }
 /*# sourceMappingURL=style.css.map */

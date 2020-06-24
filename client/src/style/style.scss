@@ -1,11 +1,13 @@
 //COLORS
 $white-color: #E3E4E4;
 $bright-color: #65CCB8;
-$dark-color: #1C4A32;
+$dark-color: #2A4236;
 $darker-color: #0C2116;
+$side-color: #1A2921;
 
 //SHADOW
 $dark-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
+$side-shadow: -25px -25px 30px rgba(0,0,0,0.5);
 
 @import url("https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css");
 //BODY
@@ -51,7 +53,7 @@ body {
     }
 
     a{
-        color: #fff;
+        color: $white-color;
         padding: 0.45rem;
         margin: 0 0.25rem;    
     }
@@ -158,10 +160,10 @@ body {
   }  
 //map && side Lucas
 .leaflet-container {
-  z-index: 0;
+  z-index: 2;
   width: 75%;
-    height: 88.2vh;
- order:2;
+  height: 88.2vh;
+  order:2;
 }
 .flex-container{
   display: flex;
@@ -172,47 +174,44 @@ body {
   margin: auto;
   margin-top: 0;
   width: 25%;
-  background: #2A4236;
-    height: 88.2vh;
-box-shadow: -25px -25px 30px rgba(0, 0, 0, 0.5);
-color: white;
+  background: $dark-color;
+  height: 88.2vh;
+  color: $white-color;
 }
-.side-container hr{
-  color: black;
-}
+
 .side-nav{
   /* margin-bottom: -0.4rem; */
-  background:#0C2116;
+  background:$darker-color;
   width: 100%;
   display: flex;
- color: #65CCB8;
+  color: $bright-color;
 }
 input[type=button]{
-  z-index: 2;
-  background-color: rgba(31, 48, 39,0.9);
+  z-index: 1;
+  background-color: $side-color;
   border: none;
 
- color: #65CCB8;
+  color: $bright-color;
   padding: 8px 16px;
   text-decoration: none;
- margin-top: 1rem;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
   cursor: pointer;
 }
 
 input[type=button]:focus{
-  z-index: 1;
-border: none;
-  background: #2A4236;
+  z-index: 3;
+  border: none;
+  background: $dark-color;
   box-shadow: none;
 
 }
 .side-child{
-padding: 12px;
-  background: #2A4236;
-  margin-top: -0.3rem;
+  padding: 12px;
+  background: $dark-color;
+  z-index: 2;
 }
 .side-btn{
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     padding: 0.4rem 1.3rem;
     border: none;
     cursor: pointer;
@@ -221,7 +220,60 @@ padding: 12px;
     outline: none;
     transition: all 0.2s ease-in;
     /* width: 160px; */
-    border-radius: 0.5rem;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     margin-left: 0.1rem;
     margin-right: 0.1rem;
+    width: 80px;
+    height: 48px
+}
+.gamelog{
+  background-image: url(../img/gamelog.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 32px;
+}
+.leaderboard{
+  background-image: url(../img/leader.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 32px;
+}
+.history{
+  background-image: url(../img/historic.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 32px;
+}
+.rule{
+  background-image: url(../img/rule.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 32px;
+}
+
+//RULES
+
+.rules{
+  h5{
+    font-size: 32px;
+    margin: auto;
+    margin-top: 8px;
+  }
+  ul{
+    padding-inline-start: 0px;
+    li{
+      text-align: justify;
+      padding: 16px 32px 0px 32px;
+      list-style: none;
+      b{
+        color: $bright-color
+      }
+    }
+  }
+  h6{
+    font-family: 'Gochi Hand', cursive;
+    color: $bright-color;
+    font-size: 32px;
+  }
 }
