@@ -22,27 +22,27 @@ const LeaderBoard = () => {
 
     const [leaderboard, setleaderboard] = useState([]);
     useEffect(() => {
-        if (!loaded) {
-            let please = [];
-            axios
-                .get("/api/side/lead")
-                .then((response) => {
-                    const data = response.data;
-                    data.forEach(element => {
-                        const name = element.name;
-                        please.push(name);
-                        // console.log(please.length);
-                    });
-                    // if (please.length > 9) {
-
-                    setleaderboard(please);
-                    // }
+        let please = [];
+        axios
+            .get("/api/side/lead")
+            .then((response) => {
+                const data = response.data;
+                data.forEach(element => {
+                    console.log(element);
+                    const name = element.name;
+                    please.push(name);
+                    // console.log(please.length);
                 });
+                // if (please.length > 9) {
 
-            setLoaded(true);
+                setleaderboard(please);
 
-        }
-    }, [loaded]);
+                // }
+            });
+
+
+
+    }, []);
 
     // const try= (please) => {
 
