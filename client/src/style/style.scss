@@ -256,7 +256,7 @@ input[type=button]:focus{
 
 .rules{
   h5{
-    font-size: 32px;
+    font-size: 2vw;
     margin: auto;
     margin-top: 8px;
   }
@@ -266,6 +266,7 @@ input[type=button]:focus{
       text-align: justify;
       padding: 16px 32px 0px 32px;
       list-style: none;
+      font-size: 0.8vw;
       b{
         color: $bright-color
       }
@@ -274,6 +275,6 @@ input[type=button]:focus{
   h6{
     font-family: 'Gochi Hand', cursive;
     color: $bright-color;
-    font-size: 32px;
+    font-size: 2vw;
   }
 }

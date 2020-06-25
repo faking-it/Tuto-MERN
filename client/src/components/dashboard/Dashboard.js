@@ -16,9 +16,11 @@ function alertMessage() {
       autoClose: 60000,
       hideProgressBar: false,
       closeOnClick: true,
-      pauseOnHover: true,
+      pauseOnHover: false,
       draggable: true,
       progress: undefined,
+      pauseOnFocusLoss: false,
+      pauseOnHover: false,
       });
   }
   else if (m === 14 && s === 0 || m === 29  && s === 0 || m === 44 && s === 0){
@@ -27,9 +29,11 @@ function alertMessage() {
       autoClose: 60000,
       hideProgressBar: false,
       closeOnClick: true,
-      pauseOnHover: true,
+      pauseOnHover: false,
       draggable: true,
       progress: undefined,
+      pauseOnFocusLoss: false,
+      pauseOnHover: false,
       });
   }
 }
@@ -43,7 +47,7 @@ const Dashboard = () => {
       <Side />
       <ToastContainer
           position="bottom-right"
-          autoClose={8000}
+          autoClose={6000}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick
