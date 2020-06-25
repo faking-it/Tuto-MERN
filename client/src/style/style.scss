@@ -1,157 +1,237 @@
 //COLORS
-$white-color: #E3E4E4;
-$bright-color: #65CCB8;
-$dark-color: #1C4A32;
-$darker-color: #0C2116;
+$white-color: #e3e4e4;
+$bright-color: #65ccb8;
+$dark-color: #1c4a32;
+$darker-color: #0c2116;
 
 //SHADOW
 $dark-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
 
+@import url("https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css");
 //BODY
 body {
-    position: relative;
-    height: 100%;
-    font-family: Montserrat;
-    font-size: 1rem;
-    line-height: 1.6;
-    background-color: $darker-color;
-    color: $white-color;
+  margin: 0;
+  position: relative;
+  height: 100%;
+  font-family: Montserrat;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: $darker-color;
+  color: $white-color;
 
-    background-image: url(../img/background.png);
-    background-position: center center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-  }
+  background-image: url(../img/background.png);
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
 
 //NAVBAR
 
-  a {
-    text-decoration: none;
-    color: $bright-color;
-  }
-  .navbar {
+a {
+  text-decoration: none;
+  color: $bright-color;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // padding: 0.7rem 0rem 0.7rem 0rem;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  border-bottom: solid 1px #65ccb8;
+  opacity: 0.9;
+
+  ul {
+    list-style: none;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    padding: 0.7rem 2rem;
-    z-index: 1;
-    width: 100%;
-    top: 0;
-    border-bottom: solid 1px $bright-color;
-    opacity: 0.9;
-
-    ul{
-        list-style: none;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        margin-right: 80px;
-    }
-
-    a{
-        color: #fff;
-        padding: 0.45rem;
-        margin: 0 0.25rem;    
-    }
-
-    a:hover{
-        color: $bright-color;
-    }
+    margin-right: 80px;
   }
+
+  div {
+    color: #fff;
+    padding-left: 0.45rem;
+    padding-right: 0.45rem;
+    margin: 0 0.25rem;
+  }
+
+  a {
+    color: #fff;
+    padding: 0.45rem;
+    margin: 0 0.25rem;
+  }
+
+  a:hover {
+    color: $bright-color;
+  }
+}
+.clock {
+  font-size: 40px;
+  text-align: center;
+  color: $white-color;
+  text-shadow: $dark-shadow;
+}
 
 //LANDING
 
-  .landing-inner {
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    width: 80%;
-    margin: auto;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    text-align: center;
-  }
+.landing-inner {
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
 
-  .x-large {
-    font-size: 160px;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-  .text-title{
-        font-family: 'Gochi Hand', cursive;
-        color: $white-color;
-        line-height: 1.2;
-        margin-top: 160px;
-        margin-bottom: 80px;
-  }
+.x-large {
+  font-size: 160px;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.text-title {
+  font-family: "Gochi Hand", cursive;
+  color: $white-color;
+  line-height: 1.2;
+  margin-top: 160px;
+  margin-bottom: 80px;
+}
 
-  .btn {
-    display: inline-block;
-    box-shadow: $dark-shadow;
-    padding: 0.4rem 1.3rem;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    margin: 16px;
-    outline: none;
-    -webkit-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
-    width: 160px;
-    border-radius: 10px;
-  }
-  .btn.btn-primary {
-    background-color:$dark-color;
-    color: $white-color;
-  }
-  .btn.btn-primary:hover {
-    background-color: $bright-color;
-    color: $darker-color;
-    box-shadow: $dark-shadow;
-  }
-
+.btn {
+  display: inline-block;
+  box-shadow: $dark-shadow;
+  padding: 0.4rem 1.3rem;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin: 16px;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  width: 160px;
+  border-radius: 10px;
+}
+.btn.btn-primary {
+  background-color: $dark-color;
+  color: $white-color;
+}
+.btn.btn-primary:hover {
+  background-color: $bright-color;
+  color: $darker-color;
+  box-shadow: $dark-shadow;
+}
 
 //LOGIN & REGISTER
-.container{
-    text-align: center;
+.container {
+  text-align: center;
+  text-align: center;
 }
 .text-primary {
-    font-family: 'Gochi Hand', cursive;
-    color: $bright-color;
-    line-height: 1.2;
-    margin-top: 80px;
-    margin-bottom: 80px;
-    font-size: 80px;
-  }
+  font-family: "Gochi Hand", cursive;
+  color: $bright-color;
+  line-height: 1.2;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  font-size: 80px;
+}
 
-  .lead {
-    margin-bottom: 40px;
-    color: $white-color;
-    font-size: 32px;
-  }
+.lead {
+  margin-bottom: 40px;
+  color: $white-color;
+  font-size: 32px;
+}
 
-  .form-group {
-    margin: 1.2rem 0;
-  }
+.form-group {
+  margin: 1.2rem 0;
+}
 
-  .form-field{
-    border: none;
-    border-bottom: solid $bright-color 1px;
-    background-color: transparent;
-    width: 40%;
-    font-size: 20px;
-    margin: 16px;
-  }  
+.form-field {
+  border: none;
+  border-bottom: solid $bright-color 1px;
+  background-color: transparent;
+  width: 40%;
+  font-size: 20px;
+  margin: 16px;
+}
+//map && side Lucas
+.leaflet-container {
+  z-index: 1;
+  width: 75%;
+  height: 88.2vh;
+  order: 2;
+}
+.flex-container {
+  display: flex;
+}
+.side-container {
+  display: block;
+  margin: auto;
+  margin-top: 0;
+  width: 25%;
+  background: #2a4236;
+  height: 88.2vh;
+  box-shadow: -25px -25px 30px rgba(0, 0, 0, 0.5);
+  color: white;
+}
+.side-container hr {
+  color: black;
+}
+.side-nav {
+  /* margin-bottom: -0.4rem; */
+  background: #0c2116;
+  width: 100%;
+  display: flex;
+  color: #65ccb8;
+}
+input[type="button"] {
+  z-index: 1;
+  background-color: rgba(31, 48, 39, 0.9);
+  border: none;
 
+  color: #65ccb8;
+  padding: 8px 16px;
+  text-decoration: none;
+  margin-top: 1rem;
+  cursor: pointer;
+}
 
+input[type="button"]:focus {
+  z-index: 2;
+  border: none;
+  background: #2a4236;
+  box-shadow: none;
+}
+.side-child {
+  z-index: 2;
+  padding: 12px;
+  background: #2a4236;
+  margin-top: -0.5rem;
+}
+.side-btn {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  padding: 0.4rem 1.3rem;
+  border: none;
+  cursor: pointer;
+  /* font-size: 20px; */
+  /* margin: 16px; */
+  outline: none;
+  transition: all 0.2s ease-in;
+  /* width: 160px; */
+  border-radius: 0.5rem;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+}
+
+.gamelog-list {
+  list-style-type: none;
+  padding-left: unset;
+}

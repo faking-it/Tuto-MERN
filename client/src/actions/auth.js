@@ -43,6 +43,12 @@ export const register = ({ name, email, password }) => async (dispatch) => {
 
   try {
     const res = await axios.post("/api/users", body, config);
+    // Post a registered in action
+    await axios.post(
+      "/api/side/gamelog",
+      JSON.stringify({ name, action: "has started the game!" }),
+      config
+    );
 
     dispatch({
       type: REGISTER_SUCCESS,
@@ -74,6 +80,12 @@ export const login = (email, password) => async (dispatch) => {
 
   try {
     const res = await axios.post("/api/auth", body, config);
+    // Post a logged in action
+    await axios.post(
+      "/api/side/gamelog",
+      JSON.stringify({ action: "has logged in!" }),
+      config
+    );
 
     dispatch({
       type: LOGIN_SUCCESS,
@@ -94,6 +106,20 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 // Logout / Clear Profile
+
 export const logout = () => (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  // Post a logged out action
+  axios.post(
+    "/api/side/gamelog",
+    JSON.stringify({ action: "has logged out!" }),
+    config
+  );
+
   dispatch({ type: LOGOUT });
 };

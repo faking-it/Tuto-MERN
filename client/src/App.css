@@ -1,3 +1,4 @@
+
 .m-1 {
   margin: 1rem;
 }
@@ -292,6 +293,7 @@ img {
   width: 100%;
 }
 .navbar {
+  background:#0C2116;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -305,8 +307,8 @@ img {
   z-index: 1;
   width: 100%;
   top: 0;
-  border-bottom: solid 1px #17a2b8;
-  opacity: 0.9;
+  border-bottom: solid 3px #17a2b8;
+  /* opacity: 0.9; */
 }
 .navbar ul {
   display: -webkit-box;
@@ -541,10 +543,4 @@ img {
   .post button {
     padding: 0.3rem 0.4rem;
   }
-}
-@import url("https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css");
-.leaflet-container {
-  z-index: 0;
-  width: 75vw;
-  height: 100vh;
 }
