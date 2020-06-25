@@ -4,8 +4,8 @@ body {
   font-family: Montserrat;
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #0C2116;
-  color: #E3E4E4;
+  background-color: #0c2116;
+  color: #e3e4e4;
   background-image: url(../img/background.png);
   background-position: center center;
   background-attachment: fixed;
@@ -14,7 +14,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #65CCB8;
+  color: #65ccb8;
 }
 
 .navbar {
@@ -31,7 +31,7 @@ a {
   z-index: 1;
   width: 100%;
   top: 0;
-  border-bottom: solid 1px #65CCB8;
+  border-bottom: solid 1px #65ccb8;
   opacity: 0.9;
 }
 
@@ -50,7 +50,7 @@ a {
 }
 
 .navbar a:hover {
-  color: #65CCB8;
+  color: #65ccb8;
 }
 
 .landing-inner {
@@ -79,8 +79,8 @@ a {
 }
 
 .text-title {
-  font-family: 'Gochi Hand', cursive;
-  color: #E3E4E4;
+  font-family: "Gochi Hand", cursive;
+  color: #e3e4e4;
   line-height: 1.2;
   margin-top: 160px;
   margin-bottom: 80px;
@@ -89,7 +89,7 @@ a {
 .btn {
   display: inline-block;
   -webkit-box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
-          box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
   padding: 0.4rem 1.3rem;
   border: none;
   cursor: pointer;
@@ -103,15 +103,15 @@ a {
 }
 
 .btn.btn-primary {
-  background-color: #1C4A32;
-  color: #E3E4E4;
+  background-color: #1c4a32;
+  color: #e3e4e4;
 }
 
 .btn.btn-primary:hover {
-  background-color: #65CCB8;
-  color: #0C2116;
+  background-color: #65ccb8;
+  color: #0c2116;
   -webkit-box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
-          box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
 }
 
 .container {
@@ -119,8 +119,8 @@ a {
 }
 
 .text-primary {
-  font-family: 'Gochi Hand', cursive;
-  color: #65CCB8;
+  font-family: "Gochi Hand", cursive;
+  color: #65ccb8;
   line-height: 1.2;
   margin-top: 80px;
   margin-bottom: 80px;
@@ -129,7 +129,7 @@ a {
 
 .lead {
   margin-bottom: 40px;
-  color: #E3E4E4;
+  color: #e3e4e4;
   font-size: 32px;
 }
 
@@ -139,10 +139,17 @@ a {
 
 .form-field {
   border: none;
-  border-bottom: solid #65CCB8 1px;
+  border-bottom: solid #65ccb8 1px;
   background-color: transparent;
   width: 40%;
   font-size: 20px;
   margin: 16px;
+}
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css");
+.leaflet-container {
+  z-index: 0;
+  width: 75vw;
+  height: 100vh;
 }
 /*# sourceMappingURL=style.css.map */
