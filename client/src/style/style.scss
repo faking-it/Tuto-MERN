@@ -289,15 +289,12 @@ input[type=button]:focus{
 .scrollable{
   overflow: auto;
 }
-
-.history-component{
-
 .gamelog-list {
   list-style-type: none;
   padding-left: unset;
   max-height: 62vh;
 }
-
+.history-component{
 .free{
   max-height: 50vh;
 }
