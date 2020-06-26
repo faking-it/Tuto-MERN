@@ -50,6 +50,14 @@ export const register = ({ name, email, password }) => async (dispatch) => {
     });
 
     dispatch(loadUser());
+    // Post a registered in action
+
+    await axios.post(
+      "/api/side/gamelog",
+      JSON.stringify({ name, action: "has started the game!" }),
+      config
+    );
+
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -81,6 +89,12 @@ export const login = (email, password) => async (dispatch) => {
     });
 
     dispatch(loadUser());
+    // Post a logged in action
+    await axios.post(
+      "/api/side/gamelog",
+      JSON.stringify({ action: "has logged in!" }),
+      config
+    );
   } catch (err) {
     const errors = err.response.data.errors;
 
