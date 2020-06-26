@@ -45,7 +45,7 @@ function Side() {
                     className={"side-btn btn-primary rule"}
                     value={""}
                     onClick={() => setSide("rules")}
-                />                
+                />
             </div>
             <div>{side === "gamelog" ? <GameLog /> : ""}</div>
             <div>{side === "leaderboard" ? <LeaderBoard /> : ""}</div>

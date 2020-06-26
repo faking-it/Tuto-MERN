@@ -209,7 +209,7 @@ input[type=button]{
 input[type=button]:focus{
   z-index: 3;
   border: none;
-  background: $dark-color;
+  background-color: $dark-color;
   box-shadow: none;
 
 }
@@ -262,6 +262,7 @@ input[type=button]:focus{
 //RULES
 
 .rules{
+ height: 78vh;
   h5{
     font-size: 32px;
     margin: auto;
@@ -284,3 +285,25 @@ input[type=button]:focus{
     font-size: 32px;
   }
 }
+//make scroll for side components (need a definite height or at least a max-heigjt
+.scrollable{
+  overflow: auto;
+}
+
+.history-component{
+
+.gamelog-list {
+  list-style-type: none;
+  padding-left: unset;
+  max-height: 62vh;
+}
+
+.free{
+  max-height: 50vh;
+}
+.owned{
+  max-height: 20vh;
+}
+.btn-history{
+  border-radius: 2rem;
+}}

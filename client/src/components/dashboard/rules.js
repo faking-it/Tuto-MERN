@@ -1,15 +1,15 @@
 import * as React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Rules = () => (
-    <div className={"rules"}>
+    <div className={"rules scrollable"}>
         <ul>
             <h5>{"Goal"}</h5>
 
             <li> {"The goal is to become the "} <b>{"biggest tree owner in Liege."}</b> </li>
 
             <h5>{"Rules"}</h5>
-        
+
             <li>
                 {" "}
                 {

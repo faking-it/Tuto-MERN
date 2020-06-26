@@ -61,6 +61,31 @@ a {
   color: #65CCB8;
 }
 
+.clock {
+  font-size: 40px;
+  text-align: center;
+  color: #E3E4E4;
+  text-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.landing-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
 
 .x-large {
   font-size: 160px;
@@ -187,7 +212,7 @@ input[type=button] {
 input[type=button]:focus {
   z-index: 3;
   border: none;
-  background: #2A4236;
+  background-color: #2A4236;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -244,6 +269,10 @@ input[type=button]:focus {
   background-size: 32px;
 }
 
+.rules {
+  height: 78vh;
+}
+
 .rules h5 {
   font-size: 32px;
   margin: auto;
@@ -270,7 +299,26 @@ input[type=button]:focus {
   color: #65CCB8;
   font-size: 32px;
 }
-/*# sourceMappingURL=style.css.map */
-.scrollable{
+
+.scrollable {
   overflow: auto;
 }
+
+.history-component .gamelog-list {
+  list-style-type: none;
+  padding-left: unset;
+  max-height: 62vh;
+}
+
+.history-component .free {
+  max-height: 50vh;
+}
+
+.history-component .owned {
+  max-height: 20vh;
+}
+
+.history-component .btn-history {
+  border-radius: 2rem;
+}
+/*# sourceMappingURL=style.css.map */

@@ -18,7 +18,7 @@ const LeaderBoard = () => {
 
 
 
-    const [loaded, setLoaded] = useState(false);
+    // const [loaded, setLoaded] = useState(false);
 
     const [leaderboard, setleaderboard] = useState([]);
     useEffect(() => {
