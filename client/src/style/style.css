@@ -6,8 +6,8 @@ body {
   font-family: Montserrat;
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #0C2116;
-  color: #E3E4E4;
+  background-color: #0c2116;
+  color: #e3e4e4;
   background-image: url(../img/background.png);
   background-position: center center;
   background-attachment: fixed;
@@ -16,7 +16,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #65CCB8;
+  color: #65ccb8;
 }
 
 .navbar {
@@ -32,7 +32,7 @@ a {
   z-index: 1;
   width: 100%;
   top: 0;
-  border-bottom: solid 1px #65CCB8;
+  border-bottom: solid 1px #65ccb8;
   opacity: 0.9;
 }
 
@@ -44,6 +44,13 @@ a {
   margin-right: 80px;
 }
 
+.navbar div {
+  color: #fff;
+  padding-left: 0.45rem;
+  padding-right: 0.45rem;
+  margin: 0 0.25rem;
+}
+
 .navbar a {
   color: #fff;
   padding: 0.45rem;
@@ -51,9 +58,34 @@ a {
 }
 
 .navbar a:hover {
-  color: #65CCB8;
+  color: #65ccb8;
 }
 
+.clock {
+  font-size: 40px;
+  text-align: center;
+  color: #e3e4e4;
+  text-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.landing-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
 
 .x-large {
   font-size: 160px;
@@ -62,8 +94,8 @@ a {
 }
 
 .text-title {
-  font-family: 'Gochi Hand', cursive;
-  color: #E3E4E4;
+  font-family: "Gochi Hand", cursive;
+  color: #e3e4e4;
   line-height: 1.2;
   margin-top: 160px;
   margin-bottom: 80px;
@@ -86,13 +118,13 @@ a {
 }
 
 .btn.btn-primary {
-  background-color: #1C4A32;
-  color: #E3E4E4;
+  background-color: #1c4a32;
+  color: #e3e4e4;
 }
 
 .btn.btn-primary:hover {
-  background-color: #65CCB8;
-  color: #0C2116;
+  background-color: #65ccb8;
+  color: #0c2116;
   -webkit-box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
           box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
 }
@@ -103,8 +135,8 @@ a {
 }
 
 .text-primary {
-  font-family: 'Gochi Hand', cursive;
-  color: #65CCB8;
+  font-family: "Gochi Hand", cursive;
+  color: #65ccb8;
   line-height: 1.2;
   margin-top: 80px;
   margin-bottom: 80px;
@@ -113,7 +145,7 @@ a {
 
 .lead {
   margin-bottom: 40px;
-  color: #E3E4E4;
+  color: #e3e4e4;
   font-size: 32px;
 }
 
@@ -123,7 +155,7 @@ a {
 
 .form-field {
   border: none;
-  border-bottom: solid #65CCB8 1px;
+  border-bottom: solid #65ccb8 1px;
   background-color: transparent;
   width: 40%;
   font-size: 20px;
@@ -150,7 +182,7 @@ a {
   margin: auto;
   margin-top: 0;
   width: 25%;
-  background: #2A4236;
+  background: #2a4236;
   height: 88.2vh;
   -webkit-box-shadow: -25px -25px 30px rgba(0, 0, 0, 0.5);
           box-shadow: -25px -25px 30px rgba(0, 0, 0, 0.5);
@@ -163,29 +195,29 @@ a {
 
 .side-nav {
   /* margin-bottom: -0.4rem; */
-  background: #0C2116;
+  background: #0c2116;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: #65CCB8;
+  color: #65ccb8;
 }
 
-input[type=button] {
+input[type="button"] {
   z-index: 1;
   background-color: rgba(31, 48, 39, 0.9);
   border: none;
-  color: #65CCB8;
+  color: #65ccb8;
   padding: 8px 16px;
   text-decoration: none;
   margin-top: 1rem;
   cursor: pointer;
 }
 
-input[type=button]:focus {
+input[type="button"]:focus {
   z-index: 2;
   border: none;
-  background: #2A4236;
+  background: #2a4236;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -193,7 +225,7 @@ input[type=button]:focus {
 .side-child {
   z-index: 2;
   padding: 12px;
-  background: #2A4236;
+  background: #2a4236;
   margin-top: -0.5rem;
 }
 
@@ -217,3 +249,10 @@ input[type=button]:focus {
 .scrollable{
   overflow: auto;
 }
+
+.gamelog-list {
+  list-style-type: none;
+  padding-left: unset;
+  max-height: 66vh;
+}
+/*# sourceMappingURL=style.css.map */

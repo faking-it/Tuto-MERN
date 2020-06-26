@@ -17,11 +17,8 @@ const Leaflet = () => {
                 .then((response) => {
                     response.data.forEach((element) => {
                         please.push({ position: element });
-
-                        //console.log(element);
                     });
                     setMarkers(please);
-                    console.log(please.length);
                 })
 
 
