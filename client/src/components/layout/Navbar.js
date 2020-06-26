@@ -10,14 +10,6 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   const authLinks = (
     <ul>
       <li>
-        <Clock
-          className={"clock"}
-          format={"HH:mm:ss"}
-          interval={1000}
-          ticking={true}
-        />
-      </li>
-      <li>
         <div>
           <i className="fa fa-tree" aria-hidden="true" />{" "}
           <span className="hide-sm">{user && user.trees}</span>
