@@ -4,52 +4,31 @@ import MarkerCluster from "./MarkerCluster";
 import axios from "axios";
 
 const Leaflet = () => {
-    const [markers, setMarkers] = useState([]);
+  const [markers, setMarkers] = useState([]);
 
-    const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
-    useEffect(() => {
-        if (!loaded) {
+  useEffect(() => {
+    if (!loaded) {
+      let please = [];
+      axios.get("/api/trees/get").then((response) => {
+        response.data.forEach((element) => {
+          please.push({ position: element });
+        });
+        setMarkers(please);
+      });
+    }
+    setLoaded(true);
+  }, [loaded]);
 
-            let please = [];
-            axios
-                .get("/api/trees/get")
-                .then((response) => {
-                    response.data.forEach((element) => {
-                        please.push({ position: element });
-
-                        //console.log(element);
-                    });
-                    setMarkers(please);
-                    console.log(please.length);
-                })
-
-
-        } setLoaded(true);
-    }, [loaded]);
-
-    // console.log(loaded);
-    // axios
-    //     .get("/api/trees/get")
-    //     .then((response) => {
-    //         response.data.forEach((element) => {
-    //             if (please.length <= 5779) {
-    //                 please.push({ position: element });
-    //             }
-    //         });
-    //         setMarkers(please);
-    //     })
-    //     .catch((err) => {
-    //         console.log(err);
-    //     });
-    return (
-        <Map center={[50.632659, 5.579952]} zoom={13}>
-            <TileLayer
-                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-            />
-            <MarkerCluster markers={markers} />
-        </Map>
-    );
+  return (
+    <Map center={[50.632659, 5.579952]} zoom={13}>
+      <TileLayer
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+      />
+      <MarkerCluster markers={markers} />
+    </Map>
+  );
 };
 export default Leaflet;
