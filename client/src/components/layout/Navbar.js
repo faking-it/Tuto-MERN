@@ -18,7 +18,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
       <li>
         <div>
           <i className="fas fa-leaf" />{" "}
-          <span className="hide-sm">{user && user.leaves}</span>
+          <span className="hide-sm leaves">{user && user.leaves}</span>
         </div>
       </li>
       <li>

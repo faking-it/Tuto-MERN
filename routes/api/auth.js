@@ -10,13 +10,27 @@ const User = require("../../models/User");
 
 // @route   GET api/auth
 // @desc    Test route
-// @access  Public
+// @access  Private
 
 // le paramètre auth permet de protégér l'accès à cette route
 router.get("/", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password"); //n'affichera pas le mdp
     res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error)");
+  }
+});
+
+// @route   GET api/auth/All
+// @desc    Test route
+// @access  Private
+
+router.get("/All", auth, async (req, res) => {
+  try {
+    const users = await User.find({}).select("-password -email -date -avatar"); //n'affichera pas le mdp
+    res.json(users);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error)");
