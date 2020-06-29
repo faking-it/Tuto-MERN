@@ -57,9 +57,15 @@ export const register = ({ name, email, password }) => async (dispatch) => {
       JSON.stringify({ name, action: "has started the game!" }),
       config
     );
-
   } catch (err) {
     const errors = err.response.data.errors;
+
+    // Post a registered in action
+    await axios.post(
+      "/api/side/gamelog",
+      JSON.stringify({ name, action: "has started the game!" }),
+      config
+    );
 
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
