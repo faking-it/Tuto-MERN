@@ -49,13 +49,16 @@ function alertMessage() {
       progress: undefined
     });
   }
-  // Change leaves/trees values of each players in the database -- Bruno's part
+  // Change leaves/trees values of each player in the database -- Bruno's part
 
   // Il faut encore intéragir avec le leaderboard, car il ne se met pas à jour ici.
   if (m === 0 && s === 0) {
     axios.get("api/auth/All").then((response) => {
       response.data.forEach((element) => {
         element.leaves = element.leaves / 2 + element.trees;
+        if (element.leaves % 1 > 0) {
+          element.leaves = element.leaves - (element.leaves % 1) + 1;
+        }
 
         const body = {
           id: element._id,
