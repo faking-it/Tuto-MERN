@@ -102,7 +102,7 @@ router.post(
       });
       let totalLeave = await totalLeaves();
       let totalPlayer = await totalPlayers();
-      let leaves = totalLeave / totalPlayer;
+      //let leaves = totalLeave / totalPlayer;
 
       let leaves = await cool();
 
