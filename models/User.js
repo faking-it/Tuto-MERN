@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -25,9 +24,10 @@ const UserSchema = new mongoose.Schema({
     type: Number
   },
   trees: {
+
     type: Number,
-    default: 0
-  }
+    required: true,
+  },
 });
 
 // model() reçoit deux paramètres: un modèle "user" et un schéma UserSchema
