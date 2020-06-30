@@ -304,3 +304,12 @@ input[type=button]:focus{
 .btn-history{
   border-radius: 2rem;
 }}
+//register
+.colorpicker{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+    h2{
+      width: 100%;
+    }
+}

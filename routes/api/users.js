@@ -51,8 +51,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password } = req.body;
-
+    const { name, email, password, color } = req.body;
     try {
       // Vérifier que l'utilisateur existe
       let user = await User.findOne({ email });
@@ -77,7 +76,8 @@ router.post(
         email,
         avatar,
         password,
-        leaves
+        leaves,
+        color
       });
 
       // Crypter le mdp
