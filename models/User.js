@@ -27,6 +27,10 @@ const UserSchema = new mongoose.Schema({
   trees: {
     type: Number,
     default: 0
+  },
+  color: {
+    type: String,
+    required: true
   }
 });
 
