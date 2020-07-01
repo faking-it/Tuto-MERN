@@ -4,13 +4,16 @@ import { Link, Redirect } from "react-router-dom";
 import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
+import { CirclePicker } from "react-color";
 
 export const Register = ({ setAlert, register, isAuthenticated }) => {
+  const  [color, setColor]  = useState('#ff0000');
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    password2: ""
+    password2: "",
+    color
   });
 
   const { name, email, password, password2 } = formData;
@@ -23,7 +26,7 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
     if (password !== password2) {
       setAlert("Passwords do not match", "danger");
     } else {
-      register({ name, email, password });
+      register({ name, email, password, color });
     }
   };
 
@@ -79,6 +82,13 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
             onChange={(e) => onChange(e)}
             //minLength="6"
           />
+        </div>
+        <div className="form-group colorpicker">
+          <h2>Select your color</h2>
+          <center><CirclePicker
+            color={color}
+            onChangeComplete={(color) => { setColor(color.hex) }}
+          /></center >
         </div>
         <input type="submit" value="Register" className="btn btn-primary" />
       </form>
