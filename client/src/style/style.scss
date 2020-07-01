@@ -157,7 +157,13 @@ body {
     width: 40%;
     font-size: 20px;
     margin: 16px;
-  }  
+  }
+
+  input[type=text], input[type=email], input[type=password] {
+    color: $white-color;
+    outline: none;
+  }
+
 //map && side Lucas
 .leaflet-container {
   z-index: 2;
