@@ -13,7 +13,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
       <li>
         <div>
           <i className="fa fa-tree" aria-hidden="true" />{" "}
-          <span className="hide-sm">{user && user.trees}</span>
+          <span className="hide-sm trees">{user && user.trees}</span>
         </div>
       </li>
       <li>
