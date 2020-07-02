@@ -3,17 +3,17 @@ import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
-import { CirclePicker } from 'react-color';
+import { CirclePicker } from "react-color";
 import PropTypes from "prop-types";
 
 export const Register = ({ setAlert, register, isAuthenticated }) => {
-  const [color, setColor] = useState('#ff0000');
+  const [color, setColor] = useState("#ff0000");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     password2: "",
-    color,
+    color
   });
 
   const { name, email, password, password2 } = formData;
@@ -47,7 +47,7 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
             name="name"
             value={name}
             onChange={(e) => onChange(e)}
-          //required
+            //required
           />
         </div>
         <div className="form-group">
@@ -58,7 +58,7 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
             name="email"
             value={email}
             onChange={(e) => onChange(e)}
-          //required
+            //required
           />
         </div>
         <div className="form-group">
@@ -69,7 +69,7 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
             name="password"
             value={password}
             onChange={(e) => onChange(e)}
-          //minLength="6"
+            //minLength="6"
           />
         </div>
         <div className="form-group">
@@ -80,7 +80,7 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
             name="password2"
             value={password2}
             onChange={(e) => onChange(e)}
-          //minLength="6"
+            //minLength="6"
           />
         </div>
 
@@ -88,7 +88,9 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
           <h2>Select your color</h2>
           <CirclePicker
             color={color}
-            onChangeComplete={(color) => { setColor(color.hex) }}
+            onChangeComplete={(color) => {
+              setColor(color.hex);
+            }}
           />
         </div>
         {console.log(color)}
@@ -105,7 +107,6 @@ Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool
-
 };
 
 const mapStateToProps = (state) => ({
