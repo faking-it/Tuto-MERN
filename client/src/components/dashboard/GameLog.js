@@ -41,12 +41,14 @@ function GameLog() {
         }
 
         // Display the day the action took place
+        const d1 = today.getTime() / (1000 * 60 * 60 * 24);
+        const d2 = date.getTime() / (1000 * 60 * 60 * 24);
         if (today.getDate() - date.getDate() === 0) {
           date = "Today, at " + hour + ":" + min + ":" + sec;
-        } else if (today.getDate() - date.getDate() === 1) {
+        } else if (parseInt(d1 - d2) + 1 === 1) {
           date = "Yesterday";
         } else {
-          date = today.getDate() - date.getDate() + " days ago";
+          date = parseInt(d1 - d2) + 1  + " days ago";
         }
 
         please.push({
