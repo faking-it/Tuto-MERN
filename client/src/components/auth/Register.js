@@ -3,11 +3,12 @@ import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
-import PropTypes from "prop-types";
 import { CirclePicker } from "react-color";
+import PropTypes from "prop-types";
+
 
 export const Register = ({ setAlert, register, isAuthenticated }) => {
-  const  [color, setColor]  = useState('#ff0000');
+  const [color, setColor] = useState("#ff0000");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -83,13 +84,17 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
             //minLength="6"
           />
         </div>
+
         <div className="form-group colorpicker">
           <h2>Select your color</h2>
-          <center><CirclePicker
+          <CirclePicker
             color={color}
-            onChangeComplete={(color) => { setColor(color.hex) }}
-          /></center >
+            onChangeComplete={(color) => {
+              setColor(color.hex);
+            }}
+          />
         </div>
+        {console.log(color)}
         <input type="submit" value="Register" className="btn btn-primary" />
       </form>
       <p className="my-1">

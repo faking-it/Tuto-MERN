@@ -5,23 +5,34 @@ import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
 import Clock from "react-live-clock";
 
-
 const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   const authLinks = (
-      <ul>
-        <li>
-          <Link to="/profile">
-            <i className="fas fa-user" />{" "}
-            <span className="hide-sm">{user && user.name}</span>
-          </Link>
-        </li>
-        <li>
-          <a onClick={logout} href="#!">
-            <i className="fas fa-sign-out-alt" />{" "}
-            <span className="hide-sm">Logout</span>
-          </a>
-        </li>
-      </ul>
+    <ul>
+      <li>
+        <div>
+          <i className="fa fa-tree" aria-hidden="true" />{" "}
+          <span className="hide-sm trees">{user && user.trees}</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <i className="fas fa-leaf" />{" "}
+          <span className="hide-sm leaves">{user && user.leaves}</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <i className="fas fa-user" />{" "}
+          <span className="hide-sm">{user && user.name}</span>
+        </div>
+      </li>
+      <li>
+        <a onClick={logout} href="#!">
+          <i className="fas fa-sign-out-alt" />{" "}
+          <span className="hide-sm">Logout</span>
+        </a>
+      </li>
+    </ul>
   );
 
   const guestLinks = (
@@ -58,10 +69,10 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
         )}
       </h1>
       <Clock
-      className={"clock"}
-      format={"HH:mm:ss"}
-      interval={1000}
-      ticking={true}
+        className={"clock"}
+        format={"HH:mm"}
+        interval={1000}
+        ticking={true}
       />
       {!loading && (
         <Fragment> {isAuthenticated ? authLinks : guestLinks}</Fragment>

@@ -32,11 +32,7 @@ router.get("/me", auth, async (req, res) => {
 router.post(
   "/",
   [
-    auth,
-    [
-      check("status", "Status is required").not().isEmpty(),
-      check("skills", "Skills is required").not().isEmpty()
-    ]
+    auth
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -45,40 +41,15 @@ router.post(
     }
 
     const {
-      company,
-      website,
-      location,
-      bio,
-      status,
-      githubusername,
-      skills,
-      youtube,
-      facebook,
-      twitter,
-      instagram,
-      linkedin
+      leaves,
+      trees
     } = req.body;
 
     // Création d'un objet Profil
     const profileFields = {};
     profileFields.user = req.user.id;
-    if (company) profileFields.company = company;
-    if (website) profileFields.website = website;
-    if (location) profileFields.location = location;
-    if (bio) profileFields.bio = bio;
-    if (status) profileFields.status = status;
-    if (githubusername) profileFields.githubusername = githubusername;
-    if (skills) {
-      profileFields.skills = skills.split(",").map((skill) => skill.trim());
-    }
-
-    // Création d'un objet Réseaux sociaux
-    profileFields.social = {};
-    if (youtube) profileFields.social.youtube = youtube;
-    if (twitter) profileFields.social.twitter = twitter;
-    if (facebook) profileFields.social.facebook = facebook;
-    if (linkedin) profileFields.social.linkedin = linkedin;
-    if (instagram) profileFields.social.instagram = instagram;
+    if (leaves) profileFields.leaves = 50;
+    if (trees) profileFields.trees = trees;
 
     try {
       let profile = await Profile.findOne({ user: req.user.id });

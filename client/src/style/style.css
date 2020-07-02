@@ -44,6 +44,13 @@ a {
   margin-right: 80px;
 }
 
+.navbar div {
+  color: #fff;
+  padding-left: 0.45rem;
+  padding-right: 0.45rem;
+  margin: 0 0.25rem;
+}
+
 .navbar a {
   color: #E3E4E4;
   padding: 0.45rem;
@@ -210,7 +217,7 @@ input[type=button] {
 input[type=button]:focus {
   z-index: 3;
   border: none;
-  background: #2A4236;
+  background-color: #2A4236;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -267,6 +274,10 @@ input[type=button]:focus {
   background-size: 32px;
 }
 
+.rules {
+  height: 78vh;
+}
+
 .rules h5 {
   font-size: 2vw;
   margin: auto;
@@ -293,5 +304,44 @@ input[type=button]:focus {
   font-family: 'Gochi Hand', cursive;
   color: #65CCB8;
   font-size: 2vw;
+}
+
+.scrollable {
+  overflow: auto;
+}
+
+.gamelog-list {
+  list-style-type: none;
+  padding-left: unset;
+  max-height: 62vh;
+}
+
+.history-component .free {
+  max-height: 50vh;
+}
+
+.history-component .owned {
+  max-height: 20vh;
+}
+
+.history-component .btn-history {
+  border-radius: 2rem;
+}
+
+.colorpicker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.colorpicker h2 {
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */

@@ -9,3 +9,7 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
 export const GET_PROFILE = "GET_PROFILE";
 export const PROFILE_ERROR = "PROFILE_ERROR";
+export const GAIN_LEAVES = "GAIN_LEAVES";
+export const LOSE_LEAVES = "LOSE_LEAVES";
+export const GAIN_FAIL = "GAIN_FAIL";
+export const LOSE_FAIL = "LOSE_FAIL";

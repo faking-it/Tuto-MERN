@@ -52,6 +52,13 @@ body {
         margin-right: 80px;
     }
 
+    div {
+      color: #fff;
+      padding-left: 0.45rem;
+      padding-right: 0.45rem;
+      margin: 0 0.25rem;
+    }
+
     a{
         color: $white-color;
         padding: 0.45rem;
@@ -208,7 +215,7 @@ input[type=button]{
 input[type=button]:focus{
   z-index: 3;
   border: none;
-  background: $dark-color;
+  background-color: $dark-color;
   box-shadow: none;
 
 }
@@ -261,6 +268,7 @@ input[type=button]:focus{
 //RULES
 
 .rules{
+ height: 78vh;
   h5{
     font-size: 2vw;
     margin: auto;
@@ -283,4 +291,32 @@ input[type=button]:focus{
     color: $bright-color;
     font-size: 2vw;
   }
+}
+//make scroll for side components (need a definite height or at least a max-heigjt
+.scrollable{
+  overflow: auto;
+}
+.gamelog-list {
+  list-style-type: none;
+  padding-left: unset;
+  max-height: 62vh;
+}
+.history-component{
+.free{
+  max-height: 50vh;
+}
+.owned{
+  max-height: 20vh;
+}
+.btn-history{
+  border-radius: 2rem;
+}}
+//register
+.colorpicker{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+    h2{
+      width: 100%;
+    }
 }
