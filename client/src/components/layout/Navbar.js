@@ -5,11 +5,9 @@ import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
 import Clock from "react-live-clock";
 
-
 const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   const authLinks = (
     <ul>
-
       <li>
         <div>
           <i className="fa fa-tree" aria-hidden="true" />{" "}
