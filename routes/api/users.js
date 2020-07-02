@@ -43,7 +43,7 @@ router.post(
     check(
       "password",
       "Please enter a password with 6 or more characters"
-    ).isLength({ min: 6 }),
+    ).isLength({ min: 6 })
   ],
   // Callback
   async (req, res) => {
@@ -67,7 +67,7 @@ router.post(
       const avatar = gravatar.url(email, {
         s: "200", // default size
         r: "pg", // rating
-        d: "mm", // default
+        d: "mm" // default
       });
 
       let leaves = await cool();
@@ -91,8 +91,8 @@ router.post(
       // Retourner un jsonwebtoken
       const payload = {
         user: {
-          id: user.id,
-        },
+          id: user.id
+        }
       };
 
       jwt.sign(
@@ -115,57 +115,48 @@ router.post(
 // @route   UPDATE api/users/update
 // @desc    Update User
 // @access  Private
-router.post(
-  "/update",
-  auth,
-  async (req, res) => {
+router.post("/update", auth, async (req, res) => {
+  try {
+    let user = await User.findById(req.body.id);
 
-    try {
-      let user = await User.findById(req.body.id);
-
-      if (user) {
-        user = await User.findOneAndUpdate(
-          { _id: req.body.id },
-          { leaves: req.body.leaves },
-          { upsert: true, new: true}
-        );
-        return res.json(user);
-      }
-      
-    } catch (err) {
-      console.log(err.message);
-      res.status(500).send(err.message);
+    if (user) {
+      user = await User.findOneAndUpdate(
+        { _id: req.body.id },
+        { leaves: req.body.leaves },
+        { upsert: true, new: true }
+      );
+      return res.json(user);
     }
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send(err.message);
   }
-)
+});
 
 // @route   UPDATE api/users/updateAll
 // @desc    Update All Users
 // @access  Private
-router.post(
-  "/updateAll",
-  auth,
-  async (req, res) => {
+router.post("/updateAll", auth, async (req, res) => {
+  try {
+    let users = await User.find({});
 
-    try {
-      let users = await User.find( {} );
-
-      if (users) {
-        users = await User.updateMany({},
+    if (users) {
+      users = await User.updateMany(
+        {},
         {
           leaves: req.body.leaves
-        }, {
+        },
+        {
           upsert: true,
           new: true
-        });
-        return res.json(users);
-      }
-
-    } catch (err) {
-      console.log(err.message);
-      res.status(500).send(err.message);
+        }
+      );
+      return res.json(users);
     }
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send(err.message);
   }
-)
+});
 
 module.exports = router;
