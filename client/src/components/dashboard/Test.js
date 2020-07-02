@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Map, TileLayer, useLeaflet } from "react-leaflet";
 import L, { circle } from "leaflet";
-import { connect } from "react-redux";
 import "leaflet.markercluster/dist/leaflet.markercluster";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import ReactDOMServer from "react-dom/server";
+import soundFile from "../../Sounds/click.wav";
+
 const mcg = L.markerClusterGroup();
 const MarkerCluster = ({ markers }) => {
+  const [modalShow, setModalShow] = React.useState(false);
   const { map } = useLeaflet();
   useEffect(() => {
     const customMarker = new L.Icon({
       iconUrl: "https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png",
+      shadowSize: [0, 0],
       iconSize: [25, 41],
       iconAnchor: [10, 41],
       popupAnchor: [2, -40],
@@ -31,7 +34,14 @@ const MarkerCluster = ({ markers }) => {
               <div>Leaves: {element.leaves}</div>
               <div>Owner: {element.owner}</div>
               <div>
-                <Button id="buy">Buy</Button>
+                {element.lock ? (
+                  <Button id="buy" disabled>
+                    Buy
+                  </Button>
+                ) : (
+                  <Button id="buy">Buy</Button>
+                )}
+                <Button id="lock">Lock</Button>
               </div>
             </div>
           )
@@ -42,16 +52,60 @@ const MarkerCluster = ({ markers }) => {
             .getElement()
             .querySelector("#buy")
             .addEventListener("click", (e) => {
+              const likeAudio = new Audio(soundFile);
+              const playSound = (audioFile) => {
+                audioFile.play();
+              };
+              playSound(likeAudio);
               axios
                 .post("/api/trees/buy", {
                   lat: element.geoloc.lat,
                   lon: element.geoloc.lon,
                 })
                 .then((response) => {
-                  console.log("success");
+                  popUp.setContent(
+                    ReactDOMServer.renderToString(
+                      <div>
+                        <h2>Tree {response.data.arbotag}</h2>
+                        <div>Leaves: {response.data.leaves}</div>
+                        <div>Owner: {response.data.owner}</div>
+                        <div>
+                          {element.lock ? (
+                            <Button id="buy" disabled>
+                              Buy
+                            </Button>
+                          ) : (
+                            <Button id="buy">Buy</Button>
+                          )}
+                          <Button id="lock">Lock</Button>
+                        </div>
+                      </div>
+                    )
+                  );
                 })
                 .catch((err) => {
-                  console.log(err);
+                  console.log(err.response.data);
+                });
+            });
+          popUp
+            .getElement()
+            .querySelector("#lock")
+            .addEventListener("click", (e) => {
+              const likeAudio = new Audio(soundFile);
+              const playSound = (audioFile) => {
+                audioFile.play();
+              };
+              playSound(likeAudio);
+              axios
+                .post("/api/trees/lock", {
+                  lat: element.geoloc.lat,
+                  lon: element.geoloc.lon,
+                })
+                .then((response) => {
+                  console.log(response.data);
+                })
+                .catch((err) => {
+                  console.log(err.response.data);
                 });
             });
         });
@@ -62,26 +116,6 @@ const MarkerCluster = ({ markers }) => {
     // // add the marker cluster group to the map
     map.addLayer(mcg);
   }, [markers, map]);
-  //mcg.on("click", (e) => {
-  //let treesAround = [];
-  //L.Circle.include({
-  //contains: function (circ, latLng) {
-  //return circ.getLatLng().distanceTo(latLng) < circ.getRadius();
-  //},
-  //});
-  //const circle = L.circle(e.latlng, {
-  //radius: 100,
-  //opacity: 0,
-  //fillOpacity: 0,
-  //}).addTo(map);
-  //for (let i = 0; i < markers.length; i++) {
-  //if (
-  //circle.contains(circle, [markers[i].geoloc.lat, markers[i].geoloc.lon])
-  //) {
-  //treesAround.push(markers[i]);
-  //}
-  //}
-  //});
   return null;
 };
 

@@ -29,6 +29,9 @@ const TreeSchema = new mongoose.Schema({
   owner: {
     type: String,
   },
+  lock: {
+    type: Boolean,
+  },
 });
 
 module.exports = Tree = mongoose.model("trees", TreeSchema);
