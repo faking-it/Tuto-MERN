@@ -122,7 +122,10 @@ router.post("/update", auth, async (req, res) => {
     if (user) {
       user = await User.findOneAndUpdate(
         { _id: req.body.id },
-        { leaves: req.body.leaves },
+        {
+          leaves: req.body.leaves,
+          trees: req.body.trees
+        },
         { upsert: true, new: true }
       );
       return res.json(user);

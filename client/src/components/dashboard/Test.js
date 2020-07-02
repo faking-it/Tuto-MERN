@@ -34,7 +34,7 @@
 // export default Leaflet;
 import React, { useState, useEffect } from "react";
 import { Map, TileLayer, useLeaflet } from "react-leaflet";
-import L, { circle } from "leaflet";
+import L from "leaflet";
 import "leaflet.markercluster/dist/leaflet.markercluster";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
@@ -51,12 +51,12 @@ const MarkerCluster = ({ markers }) => {
       shadowSize: [0, 0],
       iconSize: [25, 41],
       iconAnchor: [10, 41],
-      popupAnchor: [2, -40],
+      popupAnchor: [2, -40]
     });
     mcg.clearLayers();
     markers.forEach((element) => {
       L.marker(new L.LatLng(element.geoloc.lat, element.geoloc.lon), {
-        icon: customMarker,
+        icon: customMarker
       })
         .addTo(mcg)
         .bindPopup(
@@ -71,8 +71,8 @@ const MarkerCluster = ({ markers }) => {
                     Buy
                   </Button>
                 ) : (
-                    <Button id="buy">Buy</Button>
-                  )}
+                  <Button id="buy">Buy</Button>
+                )}
                 <Button id="lock">Lock</Button>
               </div>
             </div>
@@ -92,7 +92,7 @@ const MarkerCluster = ({ markers }) => {
               axios
                 .post("/api/trees/buy", {
                   lat: element.geoloc.lat,
-                  lon: element.geoloc.lon,
+                  lon: element.geoloc.lon
                 })
                 .then((response) => {
                   popUp.setContent(
@@ -109,35 +109,22 @@ const MarkerCluster = ({ markers }) => {
                     )
                   );
                   axios.get("api/auth").then((response) => {
-                    const body = {
-                      id: response.data._id,
-                      trees: response.data.trees + 1
-                    };
-                    const config = {
-                      headers: {
-                        "Content-Type": "application/json"
-                      }
-                    };
-                    console.log(body);
-
-                    console.log(response.data);
-
-                    axios.post("api/users/update", body, config);
-
+                    document.getElementsByClassName("trees")[0].innerHTML =
+                      response.data.trees;
+                    document.getElementsByClassName("leaves")[0].innerHTML =
+                      response.data.leaves;
                   });
                   // axios.get("api/auth").then((response) => {
-                  //   document.getElementsByClassName("trees")[0].innerHTML = response.data.trees;
+
                   //   console.log(response.data.trees);
                   // });
                   // axios.get("api/auth").then((response) => {
-                  //   document.getElementsByClassName("leaves")[0].innerHTML = response.data.leaves;
 
                   // });
                 })
                 .catch((err) => {
                   console.log(err);
                 });
-
             });
           popUp
             .getElement()
@@ -151,7 +138,7 @@ const MarkerCluster = ({ markers }) => {
               axios
                 .post("/api/trees/lock", {
                   lat: element.geoloc.lat,
-                  lon: element.geoloc.lon,
+                  lon: element.geoloc.lon
                 })
                 .then((response) => {
                   console.log(response.data);
