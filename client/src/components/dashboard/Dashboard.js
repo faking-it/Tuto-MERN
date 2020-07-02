@@ -62,7 +62,8 @@ function alertMessage() {
 
         const body = {
           id: element._id,
-          leaves: element.leaves
+          leaves: element.leaves,
+          trees: element.trees
         };
         const config = {
           headers: {
@@ -88,7 +89,8 @@ function alertMessage() {
 
         const body = {
           id: element._id,
-          leaves: element.leaves
+          leaves: element.leaves,
+          trees: element.trees
         };
         const config = {
           headers: {

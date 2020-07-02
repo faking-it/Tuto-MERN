@@ -56,7 +56,10 @@ router.post("/buy", auth, async function (req, res) {
             res.status(404).send("This tree is already yours");
             return;
         }
-        await user.updateOne({ leaves: newLeaves });
+        await user.updateOne({
+            leaves: newLeaves,
+            trees: user.trees + 1,
+        });
         await tree.updateOne({ owner: user.name });
         const treeUpdated = await Tree.findOne({
             geoloc: { lat: lati, lon: long },

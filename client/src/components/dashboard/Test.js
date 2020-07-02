@@ -109,28 +109,14 @@ const MarkerCluster = ({ markers }) => {
                     )
                   );
                   axios.get("api/auth").then((response) => {
-                    const body = {
-                      id: response.data._id,
-                      trees: response.data.trees + 1
-                    };
-                    const config = {
-                      headers: {
-                        "Content-Type": "application/json"
-                      }
-                    };
-                    console.log(body);
-
-                    console.log(response.data);
-
-                    axios.post("api/users/update", body, config);
-
+                    document.getElementsByClassName("trees")[0].innerHTML = response.data.trees;
+                    document.getElementsByClassName("leaves")[0].innerHTML = response.data.leaves;
                   });
                   // axios.get("api/auth").then((response) => {
-                  //   document.getElementsByClassName("trees")[0].innerHTML = response.data.trees;
+
                   //   console.log(response.data.trees);
                   // });
                   // axios.get("api/auth").then((response) => {
-                  //   document.getElementsByClassName("leaves")[0].innerHTML = response.data.leaves;
 
                   // });
                 })

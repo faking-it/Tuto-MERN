@@ -126,12 +126,15 @@ router.post(
       if (user) {
         user = await User.findOneAndUpdate(
           { _id: req.body.id },
-          { leaves: req.body.leaves },
-          { upsert: true, new: true}
+          {
+            leaves: req.body.leaves,
+            trees: req.body.trees
+          },
+          { upsert: true, new: true }
         );
         return res.json(user);
       }
-      
+
     } catch (err) {
       console.log(err.message);
       res.status(500).send(err.message);
@@ -148,13 +151,13 @@ router.post(
   async (req, res) => {
 
     try {
-      let users = await User.find( {} );
+      let users = await User.find({});
 
       if (users) {
         users = await User.updateMany({},
-        {
-          leaves: req.body.leaves
-        }, {
+          {
+            leaves: req.body.leaves
+          }, {
           upsert: true,
           new: true
         });

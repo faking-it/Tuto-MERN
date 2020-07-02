@@ -72,7 +72,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
       </h1>
       <Clock
         className={"clock"}
-        format={"HH:mm:ss"}
+        format={"HH:mm"}
         interval={1000}
         ticking={true}
       />
