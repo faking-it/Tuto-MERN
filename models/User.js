@@ -28,6 +28,10 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  color: {
+    type: String,
+    required: true,
+  }
 });
 
 // model() reçoit deux paramètres: un modèle "user" et un schéma UserSchema

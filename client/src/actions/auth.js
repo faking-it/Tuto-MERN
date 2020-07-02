@@ -32,14 +32,14 @@ export const loadUser = () => async (dispatch) => {
 };
 
 // Register User
-export const register = ({ name, email, password }) => async (dispatch) => {
+export const register = ({ name, email, password, color }) => async (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json"
     }
   };
 
-  const body = JSON.stringify({ name, email, password });
+  const body = JSON.stringify({ name, email, password, color });
 
   try {
     const res = await axios.post("/api/users", body, config);
@@ -57,9 +57,15 @@ export const register = ({ name, email, password }) => async (dispatch) => {
       JSON.stringify({ name, action: "has started the game!" }),
       config
     );
-
   } catch (err) {
     const errors = err.response.data.errors;
+
+    // Post a registered in action
+    await axios.post(
+      "/api/side/gamelog",
+      JSON.stringify({ name, action: "has started the game!" }),
+      config
+    );
 
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
+const auth = require("../../middleware/auth");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const { check, validationResult } = require("express-validator");
@@ -83,8 +84,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password } = req.body;
-
+    const { name, email, password, color } = req.body;
     try {
       // Vérifier que l'utilisateur existe
       let user = await User.findOne({ email });
@@ -112,6 +112,7 @@ router.post(
         avatar,
         password,
         leaves,
+        color
       });
       // Crypter le mdp
       const salt = await bcrypt.genSalt(10); // 10 est le nbre conseillé par la doc
@@ -143,5 +144,64 @@ router.post(
     }
   }
 );
+
+// @route   UPDATE api/users/update
+// @desc    Update User
+// @access  Private
+router.post(
+  "/update",
+  auth,
+  async (req, res) => {
+
+    try {
+      let user = await User.findById(req.body.id);
+
+      if (user) {
+        user = await User.findOneAndUpdate(
+          { _id: req.body.id },
+          {
+            leaves: req.body.leaves,
+            trees: req.body.trees
+          },
+          { upsert: true, new: true }
+        );
+        return res.json(user);
+      }
+
+    } catch (err) {
+      console.log(err.message);
+      res.status(500).send(err.message);
+    }
+  }
+)
+
+// @route   UPDATE api/users/updateAll
+// @desc    Update All Users
+// @access  Private
+router.post(
+  "/updateAll",
+  auth,
+  async (req, res) => {
+
+    try {
+      let users = await User.find({});
+
+      if (users) {
+        users = await User.updateMany({},
+          {
+            leaves: req.body.leaves
+          }, {
+          upsert: true,
+          new: true
+        });
+        return res.json(users);
+      }
+
+    } catch (err) {
+      console.log(err.message);
+      res.status(500).send(err.message);
+    }
+  }
+)
 
 module.exports = router;

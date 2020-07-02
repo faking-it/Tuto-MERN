@@ -321,4 +321,21 @@ input[type=button]:focus {
 .history-component .btn-history {
   border-radius: 2rem;
 }
+
+.colorpicker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.colorpicker h2 {
+  width: 100%;
+}
 /*# sourceMappingURL=style.css.map */

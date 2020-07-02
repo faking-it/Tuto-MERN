@@ -13,13 +13,13 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
       <li>
         <div>
           <i className="fa fa-tree" aria-hidden="true" />{" "}
-          <span className="hide-sm">{user && user.trees}</span>
+          <span className="hide-sm trees">{user && user.trees}</span>
         </div>
       </li>
       <li>
         <div>
           <i className="fas fa-leaf" />{" "}
-          <span className="hide-sm">{user && user.leaves}</span>
+          <span className="hide-sm leaves">{user && user.leaves}</span>
         </div>
       </li>
       <li>
@@ -72,7 +72,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
       </h1>
       <Clock
         className={"clock"}
-        format={"HH:mm:ss"}
+        format={"HH:mm"}
         interval={1000}
         ticking={true}
       />

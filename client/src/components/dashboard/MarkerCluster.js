@@ -1,15 +1,15 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 import PropTypes from "prop-types";
 import L from "leaflet";
 import "leaflet.markercluster/dist/leaflet.markercluster";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
-import {useLeaflet} from "react-leaflet";
+import { useLeaflet } from "react-leaflet";
 
 const mcg = L.markerClusterGroup();
 
-const MarkerCluster = ({markers}) => {
-    const {map} = useLeaflet();
+const MarkerCluster = ({ markers }) => {
+    const { map } = useLeaflet();
 
     useEffect(() => {
         const customMarker = new L.Icon({
@@ -18,9 +18,10 @@ const MarkerCluster = ({markers}) => {
             iconSize: [25, 41],
             iconAnchor: [10, 41],
             popupAnchor: [2, -40],
+
         });
         mcg.clearLayers();
-        markers.forEach(({position}) =>
+        markers.forEach(({ position }) =>
             L.marker(new L.LatLng(position.lat, position.lon), {
                 icon: customMarker,
             }).addTo(mcg),
