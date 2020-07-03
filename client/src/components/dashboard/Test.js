@@ -42,21 +42,34 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import ReactDOMServer from "react-dom/server";
 import soundFile from "../../Sounds/click.wav";
+//import { use } from "../../../../routes/api/users";
 const mcg = L.markerClusterGroup();
 const MarkerCluster = ({ markers }) => {
   const { map } = useLeaflet();
   useEffect(() => {
-    const customMarker = new L.Icon({
-      iconUrl: "https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png",
-      shadowSize: [0, 0],
-      iconSize: [25, 41],
-      iconAnchor: [10, 41],
-      popupAnchor: [2, -40]
-    });
     mcg.clearLayers();
     markers.forEach((element) => {
+      const svgPath = `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="151.5px"
+            height="251.5px" viewBox="0 0 151.5 251.5" style="enable-background:new 0 0 151.5 251.5;" xml:space="preserve">
+            
+          <style type="text/css">
+            .st0{fill: ${element.owner ? element.color : "blue"};}
+          </style>
+      
+          <path class="st0" d="M75.8,0C33.9,0,0,33.9,0,75.7c0,0,0,0,0,0C0,139,75.5,251.5,75.8,251.5S151.5,138,151.5,75.8
+            C151.5,33.9,117.6,0,75.8,0C75.8,0,75.8,0,75.8,0z M81.6,96.7v21.6h-10V96.7H40.1l14-18.7h-9.7l14.5-16.7h-6.8l23.8-29.5l23.9,29.5
+            H93L107.5,78h-9.5l15.1,18.7H81.6z"/>
+          </svg>`;
+      const customMarker = new L.Icon({
+        iconUrl: `data:image/svg+xml;base64,${btoa(svgPath)}`,
+        shadowSize: [0, 0],
+        iconSize: [25, 41],
+        iconAnchor: [10, 41],
+        popupAnchor: [2, -40],
+      });
+
       L.marker(new L.LatLng(element.geoloc.lat, element.geoloc.lon), {
-        icon: customMarker
+        icon: customMarker,
       })
         .addTo(mcg)
         .bindPopup(
@@ -67,13 +80,18 @@ const MarkerCluster = ({ markers }) => {
               <div>Owner: {element.owner}</div>
               <div>
                 {element.lock ? (
-                  <Button id="buy" disabled>
-                    Buy
-                  </Button>
+                  <div>
+                    <Button id="buy" disabled>
+                      Buy
+                    </Button>
+                    <Button id="lock">Unlock</Button>
+                  </div>
                 ) : (
-                  <Button id="buy">Buy</Button>
+                  <div>
+                    <Button id="buy">Buy</Button>
+                    <Button id="lock">Lock</Button>
+                  </div>
                 )}
-                <Button id="lock">Lock</Button>
               </div>
             </div>
           )
@@ -92,7 +110,7 @@ const MarkerCluster = ({ markers }) => {
               axios
                 .post("/api/trees/buy", {
                   lat: element.geoloc.lat,
-                  lon: element.geoloc.lon
+                  lon: element.geoloc.lon,
                 })
                 .then((response) => {
                   popUp.setContent(
@@ -102,8 +120,19 @@ const MarkerCluster = ({ markers }) => {
                         <div>Leaves: {response.data.leaves}</div>
                         <div>Owner: {response.data.owner}</div>
                         <div>
-                          <Button id="buy">Buy</Button>
-                          <Button id="lock">Lock</Button>
+                          {element.lock ? (
+                            <div>
+                              <Button id="buy" disabled>
+                                Buy
+                              </Button>
+                              <Button id="lock">Unlock</Button>
+                            </div>
+                          ) : (
+                            <div>
+                              <Button id="buy">Buy</Button>
+                              <Button id="lock">Lock</Button>
+                            </div>
+                          )}
                         </div>
                       </div>
                     )
@@ -138,10 +167,34 @@ const MarkerCluster = ({ markers }) => {
               axios
                 .post("/api/trees/lock", {
                   lat: element.geoloc.lat,
-                  lon: element.geoloc.lon
+                  lon: element.geoloc.lon,
                 })
                 .then((response) => {
-                  console.log(response.data);
+                  console.log(response.data.lock);
+                  popUp.setContent(
+                    ReactDOMServer.renderToString(
+                      <div>
+                        <h2>Tree {response.data.arbotag}</h2>
+                        <div>Leaves: {response.data.leaves}</div>
+                        <div>Owner: {response.data.owner}</div>
+                        <div>
+                          {response.data.lock ? (
+                            <div>
+                              <Button id="buy" disabled>
+                                Buy
+                              </Button>
+                              <Button id="lock">Unlock</Button>
+                            </div>
+                          ) : (
+                            <div>
+                              <Button id="buy">Buy</Button>
+                              <Button id="lock">Lock</Button>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )
+                  );
                 })
                 .catch((err) => {
                   console.log(err.response.data);
