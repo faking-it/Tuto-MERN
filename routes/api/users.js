@@ -112,6 +112,16 @@ router.post(
   }
 );
 
+router.post("/color", auth, async (req, res) => { 
+  try {
+    const users = await User.find(req.user.id);
+    res.send(users.color);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send(err.message);
+  }
+});
+
 // @route   UPDATE api/users/update
 // @desc    Update User
 // @access  Private
@@ -161,5 +171,7 @@ router.post("/updateAll", auth, async (req, res) => {
     res.status(500).send(err.message);
   }
 });
+
+
 
 module.exports = router;

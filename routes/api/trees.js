@@ -132,6 +132,20 @@ router.post("/lock", auth, async function (req, res) {
     } catch (err) {
         console.log(err);
     }
+    
 });
+
+router.post("/color", auth, async (req, res) => {
+    const lati = req.body.lat;
+    const long = req.body.lon;
+    try {
+      const tree = await Tree.findOne({ geoloc: { lat: lati, lon: long } });
+      const users = await User.find({name: tree.owner});
+      res.send(users.color);
+    } catch (err) {
+      console.log(err.message);
+      res.status(500).send(err.message);
+    }
+  });
 
 module.exports = router;
