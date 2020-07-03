@@ -1,6 +1,7 @@
 // On doit d'abord importer le module Express
 const express = require("express");
 const connectDB = require("./config/db");
+const path = require("path");
 
 const app = express();
 
@@ -12,7 +13,6 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 // La fonction req.send envoie des données au navigateur, ici ("API Running")
-app.get("/", (req, res) => res.send("API Running"));
 
 // Définition des routes
 app.use("/api/users", require("./routes/api/users"));
@@ -21,6 +21,17 @@ app.use("/api/profile", require("./routes/api/profile"));
 app.use("/api/posts", require("./routes/api/posts"));
 app.use("/api/trees", require("./routes/api/trees"));
 app.use("/api/side", require("./routes/api/side"));
+app.use("/api/comments", require("./routes/api/comments"));
+
+// Serve static assets in production
+if (process.env.NODE_ENV == "production") {
+  // Set static folder
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 // process.env.PORT est le port qui sera généré une fois le projet hébergé sur Heroku
 // Pour l'instant, vu qu'on travaille en local, on définit le port 5000.

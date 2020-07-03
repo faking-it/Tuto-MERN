@@ -42,6 +42,22 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import ReactDOMServer from "react-dom/server";
 import soundFile from "../../Sounds/click.wav";
+
+function commentSubmit() {
+  console.log("llllllllllllllllllllllllll");
+  const body = {
+    text: "looooooool",
+    treeId: "5ed89d0872a52714088545eb",
+    userId: "5ef0bc0c08b907169c1396ec"
+  };
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+  axios.post("api/comments", body, config);
+}
+
 const mcg = L.markerClusterGroup();
 const MarkerCluster = ({ markers }) => {
   const { map } = useLeaflet();
@@ -74,6 +90,29 @@ const MarkerCluster = ({ markers }) => {
                   <Button id="buy">Buy</Button>
                 )}
                 <Button id="lock">Lock</Button>
+
+                <div className="post-form">
+                  <div className="bg-primary p">
+                    <h3>Leave a Comment</h3>
+                  </div>
+                  <form
+                    className="form my-1"
+                    //action={commentSubmit()}
+                  >
+                    <textarea
+                      name="text"
+                      cols="30"
+                      rows="5"
+                      placeholder="Add a comment about this tree."
+                      required
+                    />
+                    <input
+                      type="submit"
+                      className="btn-dark my-1"
+                      value="Submit"
+                    />
+                  </form>
+                </div>
               </div>
             </div>
           )
@@ -84,17 +123,28 @@ const MarkerCluster = ({ markers }) => {
             .getElement()
             .querySelector("#buy")
             .addEventListener("click", (e) => {
-              const likeAudio = new Audio(soundFile);
-              const playSound = (audioFile) => {
-                audioFile.play();
-              };
-              playSound(likeAudio);
               axios
                 .post("/api/trees/buy", {
                   lat: element.geoloc.lat,
                   lon: element.geoloc.lon
                 })
                 .then((response) => {
+                  axios.post(
+                    "/api/side/gamelog",
+                    JSON.stringify({ action: "has bought a tree!" }),
+                    {
+                      headers: {
+                        "Content-Type": "application/json"
+                      }
+                    }
+                  );
+
+                  const likeAudio = new Audio(soundFile);
+                  const playSound = (audioFile) => {
+                    audioFile.play();
+                  };
+                  playSound(likeAudio);
+
                   popUp.setContent(
                     ReactDOMServer.renderToString(
                       <div>
