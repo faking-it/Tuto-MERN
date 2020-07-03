@@ -43,36 +43,33 @@ import Button from "react-bootstrap/Button";
 import ReactDOMServer from "react-dom/server";
 import soundFile from "../../Sounds/click.wav";
 
-function commentSubmit() {
-  console.log("llllllllllllllllllllllllll");
-  const body = {
-    text: "looooooool",
-    treeId: "5ed89d0872a52714088545eb",
-    userId: "5ef0bc0c08b907169c1396ec"
-  };
-  const config = {
-    headers: {
-      "Content-Type": "application/json"
-    }
-  };
-  axios.post("api/comments", body, config);
-}
-
 const mcg = L.markerClusterGroup();
 const MarkerCluster = ({ markers }) => {
   const { map } = useLeaflet();
   useEffect(() => {
-    const customMarker = new L.Icon({
-      iconUrl: "https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png",
-      shadowSize: [0, 0],
-      iconSize: [25, 41],
-      iconAnchor: [10, 41],
-      popupAnchor: [2, -40]
-    });
     mcg.clearLayers();
     markers.forEach((element) => {
+      const svgPath = `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="151.5px"
+            height="251.5px" viewBox="0 0 151.5 251.5" style="enable-background:new 0 0 151.5 251.5;" xml:space="preserve">
+            
+          <style type="text/css">
+            .st0{fill: ${element.owner ? element.color : "blue"};}
+          </style>
+      
+          <path class="st0" d="M75.8,0C33.9,0,0,33.9,0,75.7c0,0,0,0,0,0C0,139,75.5,251.5,75.8,251.5S151.5,138,151.5,75.8
+            C151.5,33.9,117.6,0,75.8,0C75.8,0,75.8,0,75.8,0z M81.6,96.7v21.6h-10V96.7H40.1l14-18.7h-9.7l14.5-16.7h-6.8l23.8-29.5l23.9,29.5
+            H93L107.5,78h-9.5l15.1,18.7H81.6z"/>
+          </svg>`;
+      const customMarker = new L.Icon({
+        iconUrl: `data:image/svg+xml;base64,${btoa(svgPath)}`,
+        shadowSize: [0, 0],
+        iconSize: [25, 41],
+        iconAnchor: [10, 41],
+        popupAnchor: [2, -40],
+      });
+
       L.marker(new L.LatLng(element.geoloc.lat, element.geoloc.lon), {
-        icon: customMarker
+        icon: customMarker,
       })
         .addTo(mcg)
         .bindPopup(
@@ -80,7 +77,9 @@ const MarkerCluster = ({ markers }) => {
             <div>
               {element.lock ? (
                 <h2>Tree {element.arbotag} Locked</h2>
-              ) : <h2>Tree {element.arbotag}</h2>}
+              ) : (
+                <h2>Tree {element.arbotag}</h2>
+              )}
               <div className={"error"}> </div>
               <div>Leaves: {element.leaves}</div>
               <div>Owner: {element.owner}</div>
@@ -89,41 +88,20 @@ const MarkerCluster = ({ markers }) => {
                   <div className={"popup-btn"}>
                     <Button id="buy" disabled>
                       Buy
-                  </Button>
+                    </Button>
 
-                    <Button id="lock" disabled>Lock</Button>
+                    <Button id="lock" disabled>
+                      Unlock
+                    </Button>
                   </div>
-
-
                 ) : (
-                    <div className={"popup-btn"}>
-                      <Button id="buy">Buy</Button>
-                      <Button id="lock" disabled>Lock</Button>
-                    </div>
-                  )}
-
-                <div className="post-form">
-                  <div className="bg-primary p">
-                    <h3>Leave a Comment</h3>
+                  <div className={"popup-btn"}>
+                    <Button id="buy">Buy</Button>
+                    <Button id="lock" disabled>
+                      Lock
+                    </Button>
                   </div>
-                  <form
-                    className="form my-1"
-                  //action={commentSubmit()}
-                  >
-                    <textarea
-                      name="text"
-                      cols="30"
-                      rows="5"
-                      placeholder="Add a comment about this tree."
-                      required
-                    />
-                    <input
-                      type="submit"
-                      className="btn-dark my-1"
-                      value="Submit"
-                    />
-                  </form>
-                </div>
+                )}
               </div>
             </div>
           )
@@ -134,10 +112,15 @@ const MarkerCluster = ({ markers }) => {
             .getElement()
             .querySelector("#buy")
             .addEventListener("click", (e) => {
+              const likeAudio = new Audio(soundFile);
+              const playSound = (audioFile) => {
+                audioFile.play();
+              };
+              playSound(likeAudio);
               axios
                 .post("/api/trees/buy", {
                   lat: element.geoloc.lat,
-                  lon: element.geoloc.lon
+                  lon: element.geoloc.lon,
                 })
                 .then((response) => {
                   axios.post(
@@ -145,23 +128,19 @@ const MarkerCluster = ({ markers }) => {
                     JSON.stringify({ action: "has bought a tree!" }),
                     {
                       headers: {
-                        "Content-Type": "application/json"
-                      }
+                        "Content-Type": "application/json",
+                      },
                     }
                   );
-
-                  const likeAudio = new Audio(soundFile);
-                  const playSound = (audioFile) => {
-                    audioFile.play();
-                  };
-                  playSound(likeAudio);
-
+                  //e.target.closePopup();
                   popUp.setContent(
                     ReactDOMServer.renderToString(
                       <div>
                         {element.lock ? (
-                          <h2>Tree {element.arbotag} Locked</h2>
-                        ) : <h2>Tree {element.arbotag}</h2>}
+                          <h2>Tree {response.data.arbotag} Locked</h2>
+                        ) : (
+                          <h2>Tree {response.data.arbotag}</h2>
+                        )}
                         <div className={"error"}> </div>
                         <div>Leaves: {response.data.leaves}</div>
                         <div>Owner: {response.data.owner}</div>
@@ -170,18 +149,16 @@ const MarkerCluster = ({ markers }) => {
                             <div className={"popup-btn"}>
                               <Button id="buy" disabled>
                                 Buy
-                  </Button>
+                              </Button>
 
-                              <Button id="lock" disabled>Lock</Button>
+                              <Button id="lock">Unlock</Button>
                             </div>
-
-
                           ) : (
-                              <div className={"popup-btn"}>
-                                <Button id="buy" disabled>Buy</Button>
-                                <Button id="lock">Lock</Button>
-                              </div>
-                            )}
+                            <div className={"popup-btn"}>
+                              <Button id="buy">Buy</Button>
+                              <Button id="lock">Lock</Button>
+                            </div>
+                          )}
                         </div>
                       </div>
                     )
@@ -201,7 +178,6 @@ const MarkerCluster = ({ markers }) => {
                   // });
                 })
                 .catch((err) => {
-                  console.log(err);
                   document.getElementsByClassName("error")[0].innerHTML =
                     err.response.data;
                 });
@@ -218,10 +194,33 @@ const MarkerCluster = ({ markers }) => {
               axios
                 .post("/api/trees/lock", {
                   lat: element.geoloc.lat,
-                  lon: element.geoloc.lon
+                  lon: element.geoloc.lon,
                 })
                 .then((response) => {
-                  console.log(response.data);
+                  popUp.setContent(
+                    ReactDOMServer.renderToString(
+                      <div>
+                        <h2>Tree {response.data.arbotag}</h2>
+                        <div>Leaves: {response.data.leaves}</div>
+                        <div>Owner: {response.data.owner}</div>
+                        <div>
+                          {response.data.lock ? (
+                            <div>
+                              <Button id="buy" disabled>
+                                Buy
+                              </Button>
+                              <Button id="lock">Unlock</Button>
+                            </div>
+                          ) : (
+                            <div>
+                              <Button id="buy">Buy</Button>
+                              <Button id="lock">Lock</Button>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )
+                  );
                 })
                 .catch((err) => {
                   console.log(err.response.data);
