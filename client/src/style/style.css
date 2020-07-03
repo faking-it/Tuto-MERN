@@ -308,6 +308,9 @@ input[type=button]:focus {
 
 .scrollable {
   overflow: auto;
+  overflow-y: scroll;
+  scrollbar-color: #65CCB8;
+  scrollbar-width: thin;
 }
 
 .gamelog-list {
@@ -343,5 +346,22 @@ input[type=button]:focus {
 
 .colorpicker h2 {
   width: 100%;
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 0.9em;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 15px 15px 30px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 15px 15px 30px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: #65CCB8;
+  border-radius: 10px;
+  opacity: 0.5;
+  outline: 1px solid #65CCB8;
 }
 /*# sourceMappingURL=style.css.map */

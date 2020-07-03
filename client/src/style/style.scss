@@ -27,6 +27,8 @@ body {
     background-repeat: no-repeat;
   }
 
+
+
 //NAVBAR
 
   a {
@@ -295,6 +297,9 @@ input[type=button]:focus{
 //make scroll for side components (need a definite height or at least a max-heigjt
 .scrollable{
   overflow: auto;
+  overflow-y: scroll;
+  scrollbar-color: $bright-color;
+  scrollbar-width: thin;
 }
 .gamelog-list {
   list-style-type: none;
@@ -319,4 +324,22 @@ input[type=button]:focus{
     h2{
       width: 100%;
     }
+}
+
+//SCROLLBAR
+
+.scrollable::-webkit-scrollbar {
+  width: 0.9em;
+}
+ 
+.scrollable::-webkit-scrollbar-track {
+  box-shadow: inset $dark-shadow;
+  border-radius: 10px;
+}
+ 
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: $bright-color;
+  border-radius: 10px;
+  opacity: 0.5;
+  outline: 1px solid $bright-color;
 }
