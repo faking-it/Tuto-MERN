@@ -11,7 +11,7 @@ const GameLog = require("../../models/Gamelog");
 
 router.get("/lead", function (req, res, next) {
     User.find()
-        .sort("-leaves")
+        .sort("-tree")
         .limit(10)
         .exec(function (err, user) {
             if (err) return next(err);
