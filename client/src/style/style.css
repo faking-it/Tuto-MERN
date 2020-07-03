@@ -129,6 +129,26 @@ a {
           box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
 }
 
+.btn.btn-primary:disabled {
+  background-color: grey;
+  color: #E3E4E4;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn.btn-primary:hover:disabled {
+  background-color: grey;
+  color: #E3E4E4;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.popup-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .container {
   text-align: center;
   text-align: center;
@@ -310,18 +330,6 @@ input[type=button]:focus {
   max-height: 62vh;
 }
 
-.history-component .free {
-  max-height: 50vh;
-}
-
-.history-component .owned {
-  max-height: 20vh;
-}
-
-.history-component .btn-history {
-  border-radius: 2rem;
-}
-
 .colorpicker {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -337,5 +345,31 @@ input[type=button]:focus {
 
 .colorpicker h2 {
   width: 100%;
+}
+
+.history-component h3 {
+  margin-bottom: 0;
+}
+
+.history-component .free {
+  max-height: 49vh;
+}
+
+.history-component .owned {
+  max-height: 49vh;
+}
+
+.history-component .btn-history {
+  border-radius: 0rem;
+}
+
+.history-component .history-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.history-component .history-nav input[type=button] {
+  width: 50%;
 }
 /*# sourceMappingURL=style.css.map */

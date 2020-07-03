@@ -131,7 +131,19 @@ body {
     color: $darker-color;
     box-shadow: $dark-shadow;
   }
-
+  .btn.btn-primary:disabled {
+    background-color:grey;
+    color: $white-color;
+    box-shadow: none;
+  }
+  .btn.btn-primary:hover:disabled {
+     background-color:grey;
+    color: $white-color;
+    box-shadow: none;
+  }
+.popup-btn{
+  display: flex;
+}
 
 //LOGIN & REGISTER
 .container{
@@ -213,6 +225,7 @@ input[type=button]:focus{
   box-shadow: none;
 
 }
+
 .side-child{
   padding: 12px;
   background: $dark-color;
@@ -294,17 +307,6 @@ input[type=button]:focus{
   padding-left: unset;
   max-height: 62vh;
 }
-.history-component{
-.free{
-  max-height: 50vh;
-}
-.owned{
-  max-height: 20vh;
-}
-.btn-history{
-  border-radius: 2rem;
-}}
-//register
 .colorpicker{
   display: flex;
   flex-flow: row wrap;
@@ -312,4 +314,54 @@ input[type=button]:focus{
     h2{
       width: 100%;
     }
+}
+.history-component{
+  h3{
+    margin-bottom: 0;
+  }
+.free{
+  max-height: 49vh;
+}
+.owned{
+  max-height: 49vh;
+}
+.btn-history{
+  border-radius: 0rem;
+}
+//register
+
+.history-nav{
+  display: flex;
+  input[type=button]{
+    width: 50%;
+  }
+  // .btn {
+  //   display: inline-block;
+  //   box-shadow: $dark-shadow;
+  //   padding: 0.4rem 1.3rem;
+  //   border: none;
+  //   cursor: pointer;
+  //   font-size: 20px;
+  //   margin: Opx;
+  //   outline: none;
+  //   -webkit-transition: all 0.2s ease-in;
+  //   transition: all 0.2s ease-in;
+  //   width: 50%;
+  // }
+//   input[type=button]{
+//   z-index: 1;
+//   background-color: $side-color;
+//   border: none;
+
+//   color: $bright-color;
+//   width: 50%;
+//   padding: 8px 16px;
+//   text-decoration: none;
+//   margin-top: 1rem;
+//   margin-left: 0.5rem;
+//   cursor: pointer;
+// }
+
+
+}
 }

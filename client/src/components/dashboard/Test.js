@@ -78,18 +78,29 @@ const MarkerCluster = ({ markers }) => {
         .bindPopup(
           ReactDOMServer.renderToString(
             <div>
-              <h2>Tree {element.arbotag}</h2>
+              {element.lock ? (
+                <h2>Tree {element.arbotag} Locked</h2>
+              ) : <h2>Tree {element.arbotag}</h2>}
+              <div className={"error"}> </div>
               <div>Leaves: {element.leaves}</div>
               <div>Owner: {element.owner}</div>
               <div>
                 {element.lock ? (
-                  <Button id="buy" disabled>
-                    Buy
+                  <div className={"popup-btn"}>
+                    <Button id="buy" disabled>
+                      Buy
                   </Button>
+
+                    <Button id="lock" disabled>Lock</Button>
+                  </div>
+
+
                 ) : (
-                  <Button id="buy">Buy</Button>
-                )}
-                <Button id="lock">Lock</Button>
+                    <div className={"popup-btn"}>
+                      <Button id="buy">Buy</Button>
+                      <Button id="lock" disabled>Lock</Button>
+                    </div>
+                  )}
 
                 <div className="post-form">
                   <div className="bg-primary p">
@@ -97,7 +108,7 @@ const MarkerCluster = ({ markers }) => {
                   </div>
                   <form
                     className="form my-1"
-                    //action={commentSubmit()}
+                  //action={commentSubmit()}
                   >
                     <textarea
                       name="text"
@@ -148,12 +159,29 @@ const MarkerCluster = ({ markers }) => {
                   popUp.setContent(
                     ReactDOMServer.renderToString(
                       <div>
-                        <h2>Tree {response.data.arbotag}</h2>
+                        {element.lock ? (
+                          <h2>Tree {element.arbotag} Locked</h2>
+                        ) : <h2>Tree {element.arbotag}</h2>}
+                        <div className={"error"}> </div>
                         <div>Leaves: {response.data.leaves}</div>
                         <div>Owner: {response.data.owner}</div>
                         <div>
-                          <Button id="buy">Buy</Button>
-                          <Button id="lock">Lock</Button>
+                          {element.lock ? (
+                            <div className={"popup-btn"}>
+                              <Button id="buy" disabled>
+                                Buy
+                  </Button>
+
+                              <Button id="lock" disabled>Lock</Button>
+                            </div>
+
+
+                          ) : (
+                              <div className={"popup-btn"}>
+                                <Button id="buy" disabled>Buy</Button>
+                                <Button id="lock">Lock</Button>
+                              </div>
+                            )}
                         </div>
                       </div>
                     )
@@ -174,6 +202,8 @@ const MarkerCluster = ({ markers }) => {
                 })
                 .catch((err) => {
                   console.log(err);
+                  document.getElementsByClassName("error")[0].innerHTML =
+                    err.response.data;
                 });
             });
           popUp
@@ -195,6 +225,8 @@ const MarkerCluster = ({ markers }) => {
                 })
                 .catch((err) => {
                   console.log(err.response.data);
+                  document.getElementsByClassName("error")[0].innerHTML =
+                    err.response.data;
                 });
             });
         });
