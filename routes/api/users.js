@@ -10,9 +10,21 @@ const { check, validationResult } = require("express-validator");
 // Import du modèle User
 const User = require("../../models/User");
 
-function cool() {
+function totalPlayers() {
   return new Promise((resolve) => {
-    Tree.find()
+    User.find()
+      .exec()
+      .then((results) => {
+        resolve(results.length);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+}
+function totalLeaves() {
+  return new Promise((resolve) => {
+    User.find()
       .exec()
       .then((results) => {
         let arraySum = [];
@@ -43,7 +55,7 @@ router.post(
     check(
       "password",
       "Please enter a password with 6 or more characters"
-    ).isLength({ min: 6 })
+    ).isLength({ min: 6 }),
   ],
   // Callback
   async (req, res) => {
@@ -67,10 +79,11 @@ router.post(
       const avatar = gravatar.url(email, {
         s: "200", // default size
         r: "pg", // rating
-        d: "mm" // default
+        d: "mm", // default
       });
-
-      let leaves = await cool();
+      let totalLeave = await totalLeaves();
+      let totalPlayer = await totalPlayers();
+      let leaves = totalLeave / totalPlayer;
 
       user = new User({
         name,
@@ -78,7 +91,7 @@ router.post(
         avatar,
         password,
         leaves,
-        color
+        color,
       });
 
       // Crypter le mdp
@@ -91,8 +104,8 @@ router.post(
       // Retourner un jsonwebtoken
       const payload = {
         user: {
-          id: user.id
-        }
+          id: user.id,
+        },
       };
 
       jwt.sign(
@@ -124,7 +137,7 @@ router.post("/update", auth, async (req, res) => {
         { _id: req.body.id },
         {
           leaves: req.body.leaves,
-          trees: req.body.trees
+          trees: req.body.trees,
         },
         { upsert: true, new: true }
       );
@@ -147,11 +160,11 @@ router.post("/updateAll", auth, async (req, res) => {
       users = await User.updateMany(
         {},
         {
-          leaves: req.body.leaves
+          leaves: req.body.leaves,
         },
         {
           upsert: true,
-          new: true
+          new: true,
         }
       );
       return res.json(users);
