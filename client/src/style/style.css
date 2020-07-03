@@ -274,14 +274,14 @@ input[type=button]:focus {
   background-size: 32px;
 }
 
-.rules {
-  height: 78vh;
-}
-
-.rules h5 {
-  font-size: 2vw;
+h5 {
+  font-size: 1.5vw;
   margin: auto;
   margin-top: 8px;
+}
+
+.rules {
+  height: 78vh;
 }
 
 .rules ul {
@@ -308,9 +308,6 @@ input[type=button]:focus {
 
 .scrollable {
   overflow: auto;
-  overflow-y: scroll;
-  scrollbar-color: #65CCB8;
-  scrollbar-width: thin;
 }
 
 .gamelog-list {
@@ -324,11 +321,27 @@ input[type=button]:focus {
 }
 
 .history-component .owned {
-  max-height: 20vh;
+  max-height: 50vh;
 }
 
 .history-component .btn-history {
-  border-radius: 2rem;
+  border-radius: 0.5rem;
+}
+
+.history-component .btn-history:focus {
+  background-color: #65CCB8;
+  color: #0C2116;
+  outline: none;
+}
+
+.history-component ul {
+  list-style-type: none;
+  text-align: left;
+}
+
+.history-component h3 {
+  font-size: 1.3vw;
+  margin-top: 40px;
 }
 
 .colorpicker {
