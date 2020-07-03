@@ -4,6 +4,7 @@ const Rules = () => (
   <div className={"rules scrollable"}>
     <ul>
       <h5>{"Goal"}</h5>
+      <hr className="line"/>
 
       <li>
         {" "}
@@ -11,6 +12,7 @@ const Rules = () => (
       </li>
 
       <h5>{"Rules"}</h5>
+      <hr className="line"/>
 
       <li>
         {" "}

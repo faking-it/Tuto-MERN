@@ -44,7 +44,8 @@ function History() {
   //console.log(owned);
   return (
     <div className={"sidecontent-container side-child history-component"}>
-      <h3>{"List of trees"}</h3>
+      <h5>{"List of trees"}</h5>
+      <hr className="line"/>
       <div className={"history-nav"}>
         <input
           type={"button"}

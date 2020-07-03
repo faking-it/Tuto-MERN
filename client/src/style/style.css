@@ -158,8 +158,8 @@ a {
   font-family: 'Gochi Hand', cursive;
   color: #65CCB8;
   line-height: 1.2;
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin-top: 60px;
+  margin-bottom: 60px;
   font-size: 80px;
 }
 
@@ -289,14 +289,14 @@ input[type=button]:focus {
   background-size: 32px;
 }
 
-.rules {
-  height: 78vh;
-}
-
-.rules h5 {
-  font-size: 32px;
+h5 {
+  font-size: 1.5vw;
   margin: auto;
   margin-top: 8px;
+}
+
+.rules {
+  height: 78vh;
 }
 
 .rules ul {
@@ -352,15 +352,31 @@ input[type=button]:focus {
 }
 
 .history-component .free {
-  max-height: 49vh;
+  max-height: 50vh;
 }
 
 .history-component .owned {
-  max-height: 49vh;
+  max-height: 50vh;
 }
 
 .history-component .btn-history {
-  border-radius: 0rem;
+  border-radius: 0.5rem;
+}
+
+.history-component .btn-history:focus {
+  background-color: #65CCB8;
+  color: #0C2116;
+  outline: none;
+}
+
+.history-component ul {
+  list-style-type: none;
+  text-align: left;
+}
+
+.history-component h3 {
+  font-size: 1.3vw;
+  margin-top: 40px;
 }
 
 .history-component .history-nav {
@@ -371,5 +387,37 @@ input[type=button]:focus {
 
 .history-component .history-nav input[type=button] {
   width: 50%;
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 0.9em;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 15px 15px 30px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 15px 15px 30px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: #65CCB8;
+  border-radius: 10px;
+  opacity: 0.5;
+  outline: 1px solid #65CCB8;
+}
+
+hr.line {
+  border: 1px solid #0C2116;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.popup h6 {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 40px;
+  color: #65CCB8;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */

@@ -49,7 +49,8 @@ const LeaderBoard = () => {
 
   return (
     <div className={"leaderBoard-container side-child"}>
-      <h3>{"Leaderboard"}</h3>
+      <h5>{"Leaderboard"}</h5>
+      <hr className="line"/>
       <div className={"log-container"}>
         <ol>
           <Lead {...leaderboard} />

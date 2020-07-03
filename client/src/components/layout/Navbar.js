@@ -6,29 +6,30 @@ import { logout } from "../../actions/auth";
 import Clock from "react-live-clock";
 
 const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
+  const userColor = (user && user.color)
   const authLinks = (
     <ul>
       <li>
         <div>
-          <i className="fa fa-tree" aria-hidden="true" />{" "}
+          <i className="fa fa-tree" style={{color:userColor}} aria-hidden="true" />{" "}
           <span className="hide-sm trees">{user && user.trees}</span>
         </div>
       </li>
       <li>
         <div>
-          <i className="fas fa-leaf" />{" "}
+          <i className="fas fa-leaf" style={{color:userColor}} />{" "}
           <span className="hide-sm leaves">{user && user.leaves}</span>
         </div>
       </li>
       <li>
         <div>
-          <i className="fas fa-user" />{" "}
+          <i className="fas fa-user" style={{color:userColor}} />{" "}
           <span className="hide-sm">{user && user.name}</span>
         </div>
       </li>
       <li>
         <a onClick={logout} href="#!">
-          <i className="fas fa-sign-out-alt" />{" "}
+          <i className="fas fa-sign-out-alt" style={{color:userColor}} />{" "}
           <span className="hide-sm">Logout</span>
         </a>
       </li>

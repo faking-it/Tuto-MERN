@@ -154,8 +154,8 @@ body {
     font-family: 'Gochi Hand', cursive;
     color: $bright-color;
     line-height: 1.2;
-    margin-top: 80px;
-    margin-bottom: 80px;
+    margin-top: 60px;
+    margin-bottom: 60px;
     font-size: 80px;
   }
 
@@ -273,14 +273,14 @@ input[type=button]:focus{
 }
 
 //RULES
-
+h5{
+  font-size: 1.5vw;
+  margin: auto;
+  margin-top: 8px;
+}
 .rules{
  height: 78vh;
-  h5{
-    font-size: 32px;
-    margin: auto;
-    margin-top: 8px;
-  }
+
   ul{
     padding-inline-start: 0px;
     li{
@@ -319,14 +319,28 @@ input[type=button]:focus{
   h3{
     margin-bottom: 0;
   }
+
 .free{
-  max-height: 49vh;
+  max-height: 50vh;
 }
 .owned{
-  max-height: 49vh;
+  max-height: 50vh;
 }
 .btn-history{
-  border-radius: 0rem;
+  border-radius: 0.5rem;
+}
+.btn-history:focus{
+  background-color: $bright-color;
+  color: $darker-color;
+  outline: none;
+}
+ul{
+  list-style-type: none;
+  text-align: left;
+}
+h3{
+  font-size: 1.3vw ;
+  margin-top: 40px;
 }
 //register
 
@@ -365,3 +379,39 @@ input[type=button]:focus{
 
 }
 }
+
+//SCROLLBAR
+
+.scrollable::-webkit-scrollbar {
+  width: 0.9em;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  box-shadow: inset $dark-shadow;
+  border-radius: 10px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: $bright-color;
+  border-radius: 10px;
+  opacity: 0.5;
+  outline: 1px solid $bright-color;
+}
+
+//Lines
+hr.line{
+  border: 1px solid $darker-color;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.popup{
+  h6{
+    font-family: 'Gochi Hand', cursive;
+    font-size: 40px;
+    color:$bright-color;
+    margin-top: 16px;
+    margin-bottom: 16px;
+   text-align: center;
+  }
+ }

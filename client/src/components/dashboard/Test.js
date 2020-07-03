@@ -53,7 +53,7 @@ const MarkerCluster = ({ markers }) => {
             height="251.5px" viewBox="0 0 151.5 251.5" style="enable-background:new 0 0 151.5 251.5;" xml:space="preserve">
             
           <style type="text/css">
-            .st0{fill: ${element.owner ? element.color : "blue"};}
+            .st0{fill: ${element.owner ? element.color : "#0C2116"};}
           </style>
       
           <path class="st0" d="M75.8,0C33.9,0,0,33.9,0,75.7c0,0,0,0,0,0C0,139,75.5,251.5,75.8,251.5S151.5,138,151.5,75.8
@@ -74,11 +74,11 @@ const MarkerCluster = ({ markers }) => {
         .addTo(mcg)
         .bindPopup(
           ReactDOMServer.renderToString(
-            <div>
+            <div className="popup">
               {element.lock ? (
-                <h2>Tree {element.arbotag} Locked</h2>
+                <h6>Tree {element.arbotag} Locked</h6>
               ) : (
-                <h2>Tree {element.arbotag}</h2>
+                <h6>Tree {element.arbotag}</h6>
               )}
               <div className={"error"}> </div>
               <div>Leaves: {element.leaves}</div>
@@ -260,10 +260,11 @@ const Leaflet = () => {
   return (
     <Map center={[50.632659, 5.579952]} zoom={13}>
       <TileLayer
-        attribution={
-          '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        }
-        url={"http://{s}.tile.osm.org/{z}/{x}/{y}.png"}
+        attribution=  'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url='https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}'
+        attribution= '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        url='https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'
+        ext = 'png'
       />
       <MarkerCluster markers={markers} />
     </Map>

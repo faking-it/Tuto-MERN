@@ -9,7 +9,7 @@ export const Actions = (actions) => {
         <br />
         {name} {action}
       </p>
-      <hr />
+      <hr className="line"/>
     </li>
   ));
 };
@@ -63,7 +63,8 @@ function GameLog() {
 
   return (
     <div className={"gamelog-container side-child"}>
-      <h3>{"Gamelog"}</h3>
+      <h5>{"Gamelog"}</h5>
+      <hr className="line"/>
       <div className={"log-container"}>
         <ol className={"gamelog-list scrollable"}>
           <Actions {...actions} />
