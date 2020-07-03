@@ -365,3 +365,22 @@ hr.line{
   margin-left: 20px;
   margin-right: 20px;
 }
+
+//POPUP
+
+.popup{
+ h6{
+   font-family: 'Gochi Hand', cursive;
+   font-size: 40px;
+   color:$darker-color;
+   margin-top: 16px;
+   margin-bottom: 16px;
+  text-align: center;
+ }
+}
+.text{
+  font-size: 40px;
+  font-family: Montserrat;
+  color: $darker-color;
+  margin-left: 16px;
+}

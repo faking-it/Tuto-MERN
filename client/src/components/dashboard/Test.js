@@ -84,8 +84,8 @@ const MarkerCluster = ({ markers }) => {
         .addTo(mcg)
         .bindPopup(
           ReactDOMServer.renderToString(
-            <div>
-              <h2>Tree {element.arbotag}</h2>
+            <div className='popup'>
+              <h6>Tree {element.arbotag}</h6>
               <div>Leaves: {element.leaves}</div>
               <div>Owner: {element.owner}</div>
               <div>
@@ -122,11 +122,11 @@ const MarkerCluster = ({ markers }) => {
                     ReactDOMServer.renderToString(
                       <div>
                         <h2>Tree {response.data.arbotag}</h2>
-                        <div>Leaves: {response.data.leaves}</div>
-                        <div>Owner: {response.data.owner}</div>
+                        <div  className="text">Leaves: {response.data.leaves}</div>
+                        <div  className="text">Owner: {response.data.owner}</div>
                         <div>
-                          <Button id="buy">Buy</Button>
-                          <Button id="lock">Lock</Button>
+                          <Button id="buy" className="popupBtn">Buy</Button>
+                          <Button id="lock" className="popupBtn">Lock</Button>
                         </div>
                       </div>
                     )

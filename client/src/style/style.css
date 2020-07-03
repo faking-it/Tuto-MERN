@@ -383,4 +383,20 @@ hr.line {
   margin-left: 20px;
   margin-right: 20px;
 }
+
+.popup h6 {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 40px;
+  color: #0C2116;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.text {
+  font-size: 40px;
+  font-family: Montserrat;
+  color: #0C2116;
+  margin-left: 16px;
+}
 /*# sourceMappingURL=style.css.map */
