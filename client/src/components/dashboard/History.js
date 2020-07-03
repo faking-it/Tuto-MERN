@@ -45,6 +45,7 @@ function History() {
   return (
     <div className={"sidecontent-container side-child history-component"}>
       <h5>{"List of trees"}</h5>
+      <hr className="line"/>
       <div className={"history-nav"}>
         <input
           type={"button"}
@@ -59,7 +60,6 @@ function History() {
           onClick={() => setHistory("owned")}
         />
       </div>
-<hr className="line"/>
       <div className={"history-container"}>
         {history === "free" ? (
           <div className={"free-container"}>
